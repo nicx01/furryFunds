@@ -17,40 +17,204 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textViewNombrePerfil"
-            android:layout_width="92dp"
+            android:id="@+id/nombrePerfilEjemploTextView"
+            android:layout_width="168dp"
             android:layout_height="19dp"
-            android:layout_marginStart="40dp"
-            android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/textViewNombre"
-            tools:layout_editor_absoluteY="27dp" />
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="EjemploFurro"
+            app:layout_constraintBottom_toTopOf="@+id/correoEjemploTextView"
+            app:layout_constraintStart_toEndOf="@+id/nombrePerfilTextView" />
 
         <TextView
-            android:id="@+id/textViewNombrePerfil6"
-            android:layout_width="92dp"
-            android:layout_height="19dp"
-            android:layout_marginStart="40dp"
-            android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
+            android:id="@+id/correoEjemploTextView"
+            android:layout_width="170dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="5dp"
+            android:text="Furro@furromail.furroes"
+            app:layout_constraintStart_toEndOf="@+id/correoTextView"
             tools:layout_editor_absoluteY="63dp" />
 
         <TextView
-            android:id="@+id/textViewNombre"
+            android:id="@+id/nGruposEjemploTextView"
+            android:layout_width="92dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="5dp"
+            android:text="N"
+            app:layout_constraintStart_toEndOf="@+id/nGruposTextView"
+            tools:layout_editor_absoluteY="170dp" />
+
+        <TextView
+            android:id="@+id/nRetosEjemploTextView"
+            android:layout_width="92dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="5dp"
+            android:text="N"
+            app:layout_constraintStart_toEndOf="@+id/nRetosTextView"
+            tools:layout_editor_absoluteY="210dp" />
+
+        <TextView
+            android:id="@+id/edadAnimalEjemploTextView"
+            android:layout_width="92dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="5dp"
+            android:text="N"
+            app:layout_constraintStart_toEndOf="@+id/edadAnimalTextView"
+            tools:layout_editor_absoluteY="250dp" />
+
+        <TextView
+            android:id="@+id/nombrePerfilTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
+            android:layout_marginBottom="16dp"
             android:text="Nombre:"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="27dp" />
+            app:layout_constraintBottom_toTopOf="@+id/correoTextView"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/correoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:text="TextView"
+            android:text="Correo:"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/nGruposTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="Numero Grupos:"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="170dp" />
+
+        <TextView
+            android:id="@+id/nRetosTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:text="Numeros Retos Completados:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nGruposTextView" />
+
+        <TextView
+            android:id="@+id/edadAnimalTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:text="Edad de tu Animal:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nRetosTextView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/perfilImageView"
+        android:layout_width="152dp"
+        android:layout_height="206dp"
+        android:layout_marginStart="40dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="73dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/cambiarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CAMBIAR"
+        tools:layout_editor_absoluteX="236dp"
+        tools:layout_editor_absoluteY="249dp" />
+
+    <Button
+        android:id="@+id/shareButton"
+        android:layout_width="41dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="249dp"
+        android:text="🔄"
+        app:layout_constraintStart_toEndOf="@+id/cambiarButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/balanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Balance:"
+        tools:layout_editor_absoluteX="236dp"
+        tools:layout_editor_absoluteY="73dp" />
+
+    <TextView
+        android:id="@+id/nickTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Nick:"
+        app:layout_constraintTop_toBottomOf="@+id/balanceEjemploTextView"
+        tools:layout_editor_absoluteX="236dp" />
+
+    <TextView
+        android:id="@+id/nickEjemploTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Furronico"
+        app:layout_constraintTop_toBottomOf="@+id/nickTextView"
+        tools:layout_editor_absoluteX="236dp" />
+
+    <TextView
+        android:id="@+id/balanceEjemploTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="EJ"
+        app:layout_constraintTop_toBottomOf="@+id/balanceTextView"
+        tools:layout_editor_absoluteX="236dp" />
+
+    <ImageView
+        android:id="@+id/perfilLogoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:srcCompat="@mipmap/furry_funds_logo"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="-12dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="411dp"
+        android:layout_height="32dp"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="699dp">
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="Button"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button7"
+            style="default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            app:layout_constraintEnd_toStartOf="@+id/button8"
+            app:layout_constraintStart_toEndOf="@+id/button6" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            android:text="Button"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
