@@ -7,22 +7,37 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="172dp"
-        android:layout_height="121dp"
+        android:layout_width="160dp"
+        android:layout_height="93dp"
         android:layout_marginStart="180dp"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="528dp"
         android:layout_marginEnd="180dp"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="Button"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        tools:layout_editor_absoluteX="68dp" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="91dp"
+        android:layout_height="32dp"
+        android:text="RETOS"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="85dp" />
+
+    <ScrollView
+        android:layout_width="252dp"
+        android:layout_height="338dp"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="169dp">
+
+        <LinearLayout
+            android:android="res/layout/retos.xml"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
