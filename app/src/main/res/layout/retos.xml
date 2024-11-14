@@ -1,47 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/verdemediobajo">
 
     <Button
         android:id="@+id/buttonOpcionesDelReto"
         android:layout_width="83dp"
         android:layout_height="75dp"
         android:text="Button"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="93dp" />
-
-    <Switch
-        android:id="@+id/switchRetoHechoSinHacer"
-        android:layout_width="73dp"
-        android:layout_height="106dp"
-        android:rotation="90"
-        tools:layout_editor_absoluteX="322dp"
-        tools:layout_editor_absoluteY="74dp" />
+        android:textColor="@color/verdemediobajo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textRetoITem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="104dp" />
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="328dp"
+        android:layout_marginBottom="8dp"
+        android:text="Reto 1:"
+        android:textColorLink="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/textFurroNickReto"
+        app:layout_constraintStart_toEndOf="@+id/buttonOpcionesDelReto"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textFurroNickReto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="140dp" />
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/verdemediobajo"
+        android:text="FurroNick"
+        android:textColorLink="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/buttonOpcionesDelReto"
+        app:layout_constraintTop_toBottomOf="@+id/textRetoITem" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="114dp"
-        android:layout_height="52dp"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="168dp">
+    <TextView
+        android:id="@+id/textDescripcionReto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/verdemediobajo"
+        android:text="Reto"
+        android:textColorLink="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/buttonOpcionesDelReto"
+        app:layout_constraintTop_toBottomOf="@+id/textFurroNickReto" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    <ToggleButton
+        android:id="@+id/toggleButtonMarcaRetoHechoSinHacer"
+        android:layout_width="110dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="340dp"
+        android:backgroundTint="@color/verdesuperoscuro"
+        android:text="ToggleButton"
+        android:textColor="@color/verdemediobajo"
+        android:textOff="SIN HACER"
+        android:textOn="CONSEGUIDO"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/buttonOpcionesDelReto"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
