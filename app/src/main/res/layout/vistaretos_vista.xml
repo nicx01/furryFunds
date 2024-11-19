@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fondoVistaReto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/buttonAñadirRetoVistaRetos"
+        android:layout_width="160dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="180dp"
+        android:backgroundTint="@color/verdemediobajo"
+        android:text="Button"
+        android:textColor="@color/verdeoscuro"
+        android:textColorLink="@color/verdesuperclaro"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewVistaRetos" />
+
+    <TextView
+        android:id="@+id/textViewRetosVistaRetos"
+        android:layout_width="91dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginBottom="52dp"
+        android:background="@color/verdemediobajo"
+        android:text="RETOS"
+        android:textAlignment="center"
+        android:textColor="@color/verdeoscuro"
+        android:textColorLink="@color/verdemediobajo"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scrollViewVistaRetos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollViewVistaRetos"
+        android:layout_width="252dp"
+        android:layout_height="338dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="52dp"
+        android:contentDescription="retos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRetosVistaRetos">
+
+        <LinearLayout
+            android:id="@+id/vistaVistaRetos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical" />
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
