@@ -2,10 +2,10 @@
 <merge xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="@layout/perfil_vista">
+    tools:showIn="@layout/inicio_vista">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarinicio"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -15,20 +15,22 @@
         tools:layout_editor_absoluteX="1dp" />
 
     <Button
-        android:id="@+id/InicioButton"
+        android:id="@+id/GruposButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:text="Inicio"
-        app:layout_constraintBottom_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="@id/toolbar" />
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="5dp"
+        android:text="Grupos"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarinicio"
+        app:layout_constraintStart_toStartOf="@id/toolbarinicio" />
 
     <Button
-        android:id="@+id/ModificarPerfilButton"
+        android:id="@+id/PerfilButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:text="Modificar"
-        app:layout_constraintBottom_toBottomOf="@id/toolbar"
-        app:layout_constraintEnd_toEndOf="@id/toolbar" />
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="5dp"
+        android:text="Perfil"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarinicio"
+        app:layout_constraintEnd_toEndOf="@id/toolbarinicio" />
 </merge>

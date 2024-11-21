@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/retos_vista">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarPerfil"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <Button
+        android:id="@+id/InicioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="5dp"
+        android:text="Inicio"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
+        app:layout_constraintStart_toStartOf="@id/toolbarPerfil" />
+
+    <Button
+        android:id="@+id/PerfilButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="5dp"
+        android:text="Perfil"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarPerfil"
+        app:layout_constraintEnd_toEndOf="@id/toolbarPerfil" />
+</merge>

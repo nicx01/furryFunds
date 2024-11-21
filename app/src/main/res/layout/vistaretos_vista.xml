@@ -79,5 +79,5 @@
         app:layout_constraintEnd_toStartOf="@+id/textViewRetosVistaRetos"
         app:srcCompat="@mipmap/atras_foreground"
         tools:layout_editor_absoluteY="42dp" />
-
+    <include layout="@layout/toolbar_perfil"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,4 +31,5 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
     </ScrollView>
+    <include layout="@layout/toolbar_inicio"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
