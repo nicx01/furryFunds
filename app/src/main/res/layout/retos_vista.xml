@@ -7,62 +7,46 @@
     android:layout_height="match_parent"
     android:background="@color/verdemediobajo">
 
-    <Button
-        android:id="@+id/buttonOpcionesDelReto"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:text="Button"
-        android:textColor="@color/verdemediobajo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.131"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textRetoITem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
         android:layout_marginTop="328dp"
         android:layout_marginBottom="8dp"
         android:text="Reto 1:"
         android:textColorLink="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textFurroNickReto"
-        app:layout_constraintStart_toEndOf="@+id/buttonOpcionesDelReto"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="167dp" />
 
     <TextView
         android:id="@+id/textFurroNickReto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
         android:layout_marginTop="8dp"
         android:text="FurroNick"
         android:textColorLink="@color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/buttonOpcionesDelReto"
-        app:layout_constraintTop_toBottomOf="@+id/textRetoITem" />
+        app:layout_constraintTop_toBottomOf="@+id/textRetoITem"
+        tools:layout_editor_absoluteX="167dp" />
 
     <TextView
         android:id="@+id/textDescripcionReto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
         android:layout_marginTop="8dp"
         android:text="Reto"
         android:textColorLink="@color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/buttonOpcionesDelReto"
-        app:layout_constraintTop_toBottomOf="@+id/textFurroNickReto" />
+        app:layout_constraintTop_toBottomOf="@+id/textFurroNickReto"
+        tools:layout_editor_absoluteX="167dp" />
 
     <ToggleButton
         android:id="@+id/toggleButtonMarcaRetoHechoSinHacer"
-        android:layout_width="100dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="328dp"
+        android:layout_width="126dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="308dp"
         android:backgroundTint="@color/verdesuperoscuro"
         android:text="ToggleButton"
         android:textColor="@color/verdemediobajo"
@@ -70,7 +54,16 @@
         android:textOn="CONSEGUIDO"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/buttonOpcionesDelReto"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="255dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:backgroundTint="@color/verdeoscuro"
+        app:srcCompat="@mipmap/ajustes_foreground"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="310dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/perfilLogoImageView3"
+        android:layout_width="142dp"
+        android:layout_height="112dp"
+        android:background="#00FFFFFF"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintStart_toEndOf="@+id/textViewRetosVistaRetos"
+        app:srcCompat="@mipmap/furry_funds_logo"
+        tools:layout_editor_absoluteY="16dp" />
+
     <Button
         android:id="@+id/buttonAñadirRetoVistaRetos"
         android:layout_width="160dp"
@@ -14,7 +25,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="180dp"
         android:backgroundTint="@color/verdemediobajo"
-        android:text="Button"
+        android:text="Añadir Reto"
         android:textColor="@color/verdeoscuro"
         android:textColorLink="@color/verdesuperclaro"
         android:textStyle="bold"
@@ -27,7 +38,7 @@
         android:id="@+id/textViewRetosVistaRetos"
         android:layout_width="91dp"
         android:layout_height="32dp"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="125dp"
         android:layout_marginBottom="52dp"
         android:background="@color/verdemediobajo"
         android:text="RETOS"
@@ -45,8 +56,8 @@
         android:id="@+id/scrollViewVistaRetos"
         android:layout_width="252dp"
         android:layout_height="338dp"
-        android:layout_marginStart="79dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="24dp"
         android:contentDescription="retos"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewRetosVistaRetos">
@@ -58,4 +69,15 @@
 
             android:orientation="vertical" />
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/atrasbuton_vistaretos"
+        android:layout_width="67dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="56dp"
+        android:contextClickable="true"
+        app:layout_constraintEnd_toStartOf="@+id/textViewRetosVistaRetos"
+        app:srcCompat="@mipmap/atras_foreground"
+        tools:layout_editor_absoluteY="42dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
