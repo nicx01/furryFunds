@@ -14,7 +14,7 @@
         android:scaleX="2"
         android:scaleY="2"
         app:srcCompat="@mipmap/furry_funds_logo"
-        tools:layout_editor_absoluteX="275dp"
+        tools:layout_editor_absoluteX="287dp"
         tools:layout_editor_absoluteY="16dp" />
 
     <ScrollView
