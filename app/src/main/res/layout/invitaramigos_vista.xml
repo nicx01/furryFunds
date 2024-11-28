@@ -89,7 +89,6 @@
         android:id="@+id/textViewGrupoInvitarAmigos"
         android:layout_width="91dp"
         android:layout_height="32dp"
-        android:layout_marginTop="40dp"
         android:background="@color/verdemediobajo"
         android:text="GRUPO"
         android:textAlignment="center"
@@ -100,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButtonAtrasInvitarAmigos" />
+        tools:layout_editor_absoluteY="137dp" />
 
     <include layout="@layout/toolbar_perfil"/>
 
@@ -117,17 +116,16 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageButton
-        android:id="@+id/imageButtonAtrasInvitarAmigos"
-        android:layout_width="123dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="36dp"
-        android:backgroundTint="#00FFFFFF"
-        android:contentDescription="BotonAtrasInvitarAmigos"
-        app:layout_constraintEnd_toStartOf="@+id/perfilLogoImageView3"
-        app:layout_constraintHorizontal_bias="0.23"
+        android:id="@+id/imageButton4"
+        android:layout_width="72dp"
+        android:layout_height="57dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.053"
         app:srcCompat="@mipmap/atras_foreground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
