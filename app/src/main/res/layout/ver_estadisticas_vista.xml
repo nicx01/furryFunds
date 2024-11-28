@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fondoVistaReto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/perfilLogoImageView3"
+        android:layout_width="142dp"
+        android:layout_height="112dp"
+        android:background="#00FFFFFF"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:srcCompat="@mipmap/furry_funds_logo"
+        tools:layout_editor_absoluteX="251dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageView
+        android:id="@+id/atrasbuton_vistaretos"
+        android:layout_width="67dp"
+        android:layout_height="59dp"
+        android:contextClickable="true"
+        app:srcCompat="@mipmap/atras_foreground"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="42dp" />
+
+    <include layout="@layout/toolbar_perfil" />
+
+    <ScrollView
+        android:layout_width="290dp"
+        android:layout_height="284dp"
+        android:layout_marginTop="356dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="128dp" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MES"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="133dp" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SIEMPRE"
+        tools:layout_editor_absoluteX="298dp"
+        tools:layout_editor_absoluteY="134dp" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AÑO"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="133dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="409dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="224dp"
+        android:autoText="false"
+        android:gravity="center"
+        android:text="DICIEMBRE 2024"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
