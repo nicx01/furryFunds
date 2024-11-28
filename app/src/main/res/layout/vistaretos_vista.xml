@@ -11,6 +11,7 @@
         android:layout_width="140dp"
         android:layout_height="112dp"
         android:backgroundTint="#00FFFFFF"
+        android:contentDescription="BotonAtrasVistaRetos"
         app:layout_constraintBottom_toTopOf="@+id/textViewRetosVistaRetos"
         app:layout_constraintEnd_toStartOf="@+id/textViewRetosVistaRetos"
         app:srcCompat="@mipmap/atras_foreground" />
