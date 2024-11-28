@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fondoVistaReto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/FurryUsuarioButtonInvitarAmigos"
+        android:layout_width="220dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="180dp"
+        android:backgroundTint="@color/verdemediobajo"
+        android:text="FurryUsuario"
+        android:textColor="@color/verdeoscuro"
+        android:textColorLink="@color/verdesuperclaro"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGrupoInvitarAmigos" />
+
+    <Button
+        android:id="@+id/FurryDelGrupoButtonInvitarAmigos"
+        android:layout_width="220dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="180dp"
+        android:backgroundTint="@color/verdemediobajo"
+        android:text="FurryMote del grupo"
+        android:textColor="@color/verdeoscuro"
+        android:textColorLink="@color/verdesuperclaro"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FurryUsuarioButtonInvitarAmigos" />
+
+    <Button
+        android:id="@+id/RolButtonInvitarAmigos"
+        android:layout_width="220dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="180dp"
+        android:backgroundTint="@color/verdemediobajo"
+        android:text="rol"
+        android:textColor="@color/verdeoscuro"
+        android:textColorLink="@color/verdesuperclaro"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FurryDelGrupoButtonInvitarAmigos" />
+
+    <ImageView
+        android:id="@+id/perfilLogoImageView3"
+        android:layout_width="142dp"
+        android:layout_height="112dp"
+        android:background="#00FFFFFF"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintBottom_toTopOf="@+id/textViewGrupoInvitarAmigos"
+        app:layout_constraintStart_toEndOf="@+id/textViewGrupoInvitarAmigos"
+        app:srcCompat="@mipmap/furry_funds_logo" />
+
+    <Button
+        android:id="@+id/AñadirFurroButtonInvitarAmigos"
+        android:layout_width="160dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginBottom="87dp"
+        android:backgroundTint="@color/verdemediobajo"
+        android:text="Añadir Furro"
+        android:textColor="@color/verdeoscuro"
+        android:textColorLink="@color/verdesuperclaro"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewGrupoInvitarAmigos"
+        android:layout_width="91dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="125dp"
+        android:background="@color/verdemediobajo"
+        android:text="GRUPO"
+        android:textAlignment="center"
+        android:textColor="@color/verdeoscuro"
+        android:textColorLink="@color/verdemediobajo"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include layout="@layout/toolbar_perfil"/>
+
+    <ImageView
+        android:id="@+id/imageViewInvitarAmigos"
+        android:layout_width="172dp"
+        android:layout_height="163dp"
+        android:layout_marginStart="139dp"
+        android:layout_marginEnd="144dp"
+        app:layout_constraintBottom_toTopOf="@+id/AñadirFurroButtonInvitarAmigos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RolButtonInvitarAmigos"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/imageButtonAtrasInvitarAmigos"
+        android:layout_width="140dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/textViewGrupoInvitarAmigos"
+        app:layout_constraintEnd_toStartOf="@+id/textViewGrupoInvitarAmigos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/atras_foreground" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
