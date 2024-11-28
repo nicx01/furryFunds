@@ -6,6 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageButton
+        android:id="@+id/imageButtonAtrasVerRetos"
+        android:layout_width="140dp"
+        android:layout_height="112dp"
+        android:backgroundTint="#00FFFFFF"
+        android:contentDescription="BotonAtrasVerRetos"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRetosVistaRetos"
+        app:layout_constraintEnd_toStartOf="@+id/textViewRetosVistaRetos"
+        app:srcCompat="@mipmap/atras_foreground" />
+
     <ImageView
         android:id="@+id/perfilLogoImageView3"
         android:layout_width="142dp"
@@ -73,17 +83,5 @@
             android:orientation="vertical" />
     </ScrollView>
 
-    <ImageView
-        android:id="@+id/atrasbuton_vistaretos"
-        android:layout_width="67dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="56dp"
-        android:contextClickable="true"
-        app:layout_constraintEnd_toStartOf="@+id/textViewRetosVistaRetos"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/atras_foreground" />
     <include layout="@layout/toolbar_perfil"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
