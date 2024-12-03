@@ -121,6 +121,7 @@
         android:layout_width="72dp"
         android:layout_height="57dp"
         android:background="#00FFFFFF"
+        android:contentDescription="boton atras"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.082"
