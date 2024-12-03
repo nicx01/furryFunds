@@ -89,6 +89,7 @@
         android:id="@+id/textViewGrupoInvitarAmigos"
         android:layout_width="91dp"
         android:layout_height="32dp"
+        android:layout_marginTop="137dp"
         android:background="@color/verdemediobajo"
         android:text="GRUPO"
         android:textAlignment="center"
@@ -99,7 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="137dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <include layout="@layout/toolbar_perfil"/>
 
