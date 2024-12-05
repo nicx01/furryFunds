@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/FurryUsuarioButtonInvitarAmigos"
+        android:id="@+id/FurryUsuarioButton_invitaramigos_vista"
         android:layout_width="220dp"
         android:layout_height="65dp"
         android:layout_marginStart="180dp"
@@ -21,10 +21,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewGrupoInvitarAmigos" />
+        app:layout_constraintTop_toBottomOf="@+id/textGrupo_invitaramigos_vista" />
 
     <Button
-        android:id="@+id/FurryDelGrupoButtonInvitarAmigos"
+        android:id="@+id/FurryDelGrupoButton_invitaramigos_vista"
         android:layout_width="220dp"
         android:layout_height="65dp"
         android:layout_marginStart="180dp"
@@ -38,10 +38,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FurryUsuarioButtonInvitarAmigos" />
+        app:layout_constraintTop_toBottomOf="@+id/FurryUsuarioButton_invitaramigos_vista" />
 
     <Button
-        android:id="@+id/RolButtonInvitarAmigos"
+        android:id="@+id/RolButton_invitaramigos_vista"
         android:layout_width="220dp"
         android:layout_height="65dp"
         android:layout_marginStart="180dp"
@@ -55,21 +55,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FurryDelGrupoButtonInvitarAmigos" />
+        app:layout_constraintTop_toBottomOf="@+id/FurryDelGrupoButton_invitaramigos_vista" />
 
     <ImageView
-        android:id="@+id/perfilLogoImageView3"
+        android:id="@+id/furryfound_invitaramigos_vista"
         android:layout_width="142dp"
         android:layout_height="112dp"
         android:background="#00FFFFFF"
         android:scaleX="2"
         android:scaleY="2"
-        app:layout_constraintBottom_toTopOf="@+id/textViewGrupoInvitarAmigos"
-        app:layout_constraintStart_toEndOf="@+id/textViewGrupoInvitarAmigos"
+        app:layout_constraintBottom_toTopOf="@+id/textGrupo_invitaramigos_vista"
+        app:layout_constraintStart_toEndOf="@+id/textGrupo_invitaramigos_vista"
         app:srcCompat="@mipmap/furry_funds_logo" />
 
     <Button
-        android:id="@+id/AñadirFurroButtonInvitarAmigos"
+        android:id="@+id/AñadirFurroButton_invitaramigos_vista"
         android:layout_width="160dp"
         android:layout_height="65dp"
         android:layout_marginStart="180dp"
@@ -86,7 +86,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textViewGrupoInvitarAmigos"
+        android:id="@+id/textGrupo_invitaramigos_vista"
         android:layout_width="91dp"
         android:layout_height="32dp"
         android:layout_marginTop="137dp"
@@ -105,19 +105,19 @@
     <include layout="@layout/toolbar_perfil"/>
 
     <ImageView
-        android:id="@+id/imageViewInvitarAmigos"
+        android:id="@+id/imageView_invitaramigos_vista"
         android:layout_width="172dp"
         android:layout_height="163dp"
         android:layout_marginStart="139dp"
         android:layout_marginEnd="144dp"
-        app:layout_constraintBottom_toTopOf="@+id/AñadirFurroButtonInvitarAmigos"
+        app:layout_constraintBottom_toTopOf="@+id/AñadirFurroButton_invitaramigos_vista"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RolButtonInvitarAmigos"
+        app:layout_constraintTop_toBottomOf="@+id/RolButton_invitaramigos_vista"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/imagenbotonAtras_invitaramigos_vista"
         android:layout_width="72dp"
         android:layout_height="57dp"
         android:background="#00FFFFFF"

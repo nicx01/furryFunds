@@ -7,6 +7,7 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_registro_vista"
         android:layout_width="326dp"
         android:layout_height="358dp"
         android:layout_marginStart="30dp"
@@ -19,7 +20,7 @@
 
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/editTextTextPassword_registro_vista"
             android:layout_width="216dp"
             android:layout_height="79dp"
             android:layout_marginStart="52dp"
@@ -31,7 +32,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/iniciarsesion_registro_vista"
             android:layout_width="149dp"
             android:layout_height="65dp"
             android:layout_marginStart="168dp"
@@ -41,7 +42,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/registrarButton"
+            android:id="@+id/registrarButton_registro_vista"
             android:layout_width="149dp"
             android:layout_height="65dp"
             android:layout_marginStart="4dp"
@@ -49,11 +50,10 @@
             android:onClick="registrar"
             android:text="REGISTRARSE"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/NombreText_registro_vista"
             android:layout_width="228dp"
             android:layout_height="115dp"
             android:layout_marginStart="48dp"
@@ -67,7 +67,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/furryfound_registro_vista"
         android:layout_width="392dp"
         android:layout_height="189dp"
         android:layout_marginStart="8dp"
@@ -90,6 +90,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top"
-        app:constraint_referenced_ids="imageView2" />
+        app:constraint_referenced_ids="furryfound_registro_vista" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

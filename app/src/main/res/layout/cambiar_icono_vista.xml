@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/vistaRetos"
+    android:id="@+id/fondo_cambiar_icono_vista"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/verdemediobajo">
@@ -10,7 +10,7 @@
     <include layout="@layout/toolbar_perfil"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/botonCambiar_cambiar_icono_vista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="156dp"
@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/FurryfundImagen_cambiar_icono_vista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -32,19 +32,19 @@
         app:srcCompat="@mipmap/furry_funds_logo" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imagenElegida_cambiar_icono_vista"
         android:layout_width="104dp"
         android:layout_height="118dp"
         android:layout_marginTop="124dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/FurryfundImagen_cambiar_icono_vista"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:mipmap/sym_def_app_icon" />
 
     <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/gridLayout"
+        android:id="@+id/gridLayout_cambiar_icono_vista"
         android:layout_width="382dp"
         android:layout_height="379dp"
         android:layout_marginTop="120dp"
@@ -55,7 +55,7 @@
         tools:ignore="MissingConstraints">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/imagensupiz_cambiar_icono_vista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_column="0"
@@ -63,7 +63,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/imagensupcent_cambiar_icono_vista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_column="1"
@@ -71,7 +71,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/imagensupder_cambiar_icono_vista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_column="2"
@@ -79,7 +79,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/imagencentroizq_cambiar_icono_vista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_column="0"
@@ -87,7 +87,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/imagencentrocentro_cambiar_icono_vista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_column="1"
@@ -95,7 +95,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/imagencentroderecha_cambiar_icono_vista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_column="2"
@@ -103,7 +103,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/imageninferiorizq_cambiar_icono_vista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_column="0"
@@ -111,7 +111,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/imageninferiorcentro_cambiar_icono_vista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_column="1"
@@ -119,7 +119,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView12"
+            android:id="@+id/imageninferiorderecha_cambiar_icono_vista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_column="2"
@@ -131,8 +131,10 @@
         android:id="@+id/gridLayout3"
         android:layout_width="382dp"
         android:layout_height="375dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="243dp">
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/botonCambiar_cambiar_icono_vista"
+        app:layout_constraintStart_toStartOf="parent">
 
     </androidx.gridlayout.widget.GridLayout>
 
