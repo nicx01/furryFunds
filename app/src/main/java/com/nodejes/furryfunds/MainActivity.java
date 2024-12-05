@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,8 +28,49 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void registrar(View view) {
-        Intent intent = new Intent(this, PRueba.class);
-        startActivity(intent);
+        TextView editTextPassword = findViewById(R.id.editTextPassword);
+        TextView editTextNombre = findViewById(R.id.editTextNombre);
+        boolean errorNombre=false;
+        boolean errorPassword=false;
+        if (editTextPassword.getText().length() != 0 && editTextPassword.getText() != ""){
+            errorPassword=true;
+        }else{
+            editTextPassword.setError("Contraseña inválida");
+            errorPassword=false;
+        }
+        if(editTextNombre.getText().length() != 0 && editTextNombre.getText() != ""){
+            errorNombre=true;
+        }else{
+            editTextNombre.setError("Nombre inválido");
+            errorPassword=false;
+        }
+        if(errorNombre==true && errorPassword==true) {
+            Intent intent = new Intent(this, Prueba.class);
+            startActivity(intent);
+        }
+
+    }
+    public void iniciarSesion(View view) {
+        TextView editTextPassword = findViewById(R.id.editTextPassword);
+        TextView editTextNombre = findViewById(R.id.editTextNombre);
+        boolean errorNombre=false;
+        boolean errorPassword=false;
+        if (editTextPassword.getText().length() != 0 && editTextPassword.getText() != ""){
+            errorPassword=true;
+        }else{
+            editTextPassword.setError("Contraseña inválida");
+            errorPassword=false;
+        }
+        if(editTextNombre.getText().length() != 0 && editTextNombre.getText() != ""){
+            errorNombre=true;
+        }else{
+            editTextNombre.setError("Nombre inválido");
+            errorPassword=false;
+        }
+        if(errorNombre==true && errorPassword==true) {
+            Intent intent = new Intent(this, Prueba.class);
+            startActivity(intent);
+        }
     }
 
 }
