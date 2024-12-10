@@ -7,7 +7,6 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout_perfil_vista"
         android:layout_width="326dp"
         android:layout_height="358dp"
         android:layout_marginStart="30dp"
@@ -19,192 +18,174 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/nombrePerfilEjemploTextView_perfil_vista"
+            android:id="@+id/nombrePerfilEjemploTextView"
             android:layout_width="168dp"
             android:layout_height="19dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="16dp"
             android:text="EjemploFurro"
-            app:layout_constraintStart_toEndOf="@+id/nombrePerfilTextView_perfil_vista"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/correoEjemploTextView"
+            app:layout_constraintStart_toEndOf="@+id/nombrePerfilTextView" />
 
         <TextView
-            android:id="@+id/correoEjemploTextView_perfil_vista"
+            android:id="@+id/correoEjemploTextView"
             android:layout_width="170dp"
             android:layout_height="18dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="5dp"
             android:text="Furro@furromail.furroes"
-            app:layout_constraintStart_toEndOf="@+id/correoTextView_perfil_vista"
-            app:layout_constraintTop_toBottomOf="@+id/nombrePerfilEjemploTextView_perfil_vista" />
+            app:layout_constraintStart_toEndOf="@+id/correoTextView"
+            tools:layout_editor_absoluteY="63dp" />
 
         <TextView
-            android:id="@+id/nGruposEjemploTextView_perfil_vista"
+            android:id="@+id/nGruposEjemploTextView"
             android:layout_width="92dp"
             android:layout_height="19dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="88dp"
+            android:layout_marginStart="5dp"
             android:text="N"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/nGruposTextView_perfil_vista"
-            app:layout_constraintTop_toBottomOf="@+id/correoEjemploTextView_perfil_vista" />
+            app:layout_constraintStart_toEndOf="@+id/nGruposTextView"
+            tools:layout_editor_absoluteY="170dp" />
 
         <TextView
-            android:id="@+id/nRetosEjemploTextView_perfil_vista"
+            android:id="@+id/nRetosEjemploTextView"
             android:layout_width="92dp"
             android:layout_height="19dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="5dp"
             android:text="N"
-            app:layout_constraintBottom_toBottomOf="@+id/nRetosTextView_perfil_vista"
-            app:layout_constraintStart_toEndOf="@+id/nRetosTextView_perfil_vista"
-            app:layout_constraintTop_toBottomOf="@+id/nGruposEjemploTextView_perfil_vista"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintStart_toEndOf="@+id/nRetosTextView"
+            tools:layout_editor_absoluteY="210dp" />
 
         <TextView
-            android:id="@+id/edadAnimalEjemploTextView_perfil_vista"
+            android:id="@+id/edadAnimalEjemploTextView"
             android:layout_width="92dp"
             android:layout_height="19dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="5dp"
             android:text="N"
-            app:layout_constraintStart_toEndOf="@+id/edadAnimalTextView_perfil_vista"
-            app:layout_constraintTop_toBottomOf="@+id/nRetosEjemploTextView_perfil_vista" />
+            app:layout_constraintStart_toEndOf="@+id/edadAnimalTextView"
+            tools:layout_editor_absoluteY="250dp" />
 
         <TextView
-            android:id="@+id/nombrePerfilTextView_perfil_vista"
+            android:id="@+id/nombrePerfilTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
+            android:layout_marginBottom="16dp"
             android:text="Nombre:"
-            app:layout_constraintBottom_toTopOf="@+id/correoTextView_perfil_vista"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.636" />
+            app:layout_constraintBottom_toTopOf="@+id/correoTextView"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/correoTextView_perfil_vista"
+            android:id="@+id/correoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="40dp"
             android:text="Correo:"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nombrePerfilEjemploTextView_perfil_vista" />
+            tools:layout_editor_absoluteY="63dp" />
 
         <TextView
-            android:id="@+id/nGruposTextView_perfil_vista"
+            android:id="@+id/nGruposTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="88dp"
+            android:layout_marginStart="40dp"
             android:text="Numero Grupos:"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/correoTextView_perfil_vista" />
+            tools:layout_editor_absoluteY="170dp" />
 
         <TextView
-            android:id="@+id/nRetosTextView_perfil_vista"
+            android:id="@+id/nRetosTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
             android:text="Numeros Retos Completados:"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nGruposTextView_perfil_vista" />
+            app:layout_constraintTop_toBottomOf="@+id/nGruposTextView" />
 
         <TextView
-            android:id="@+id/edadAnimalTextView_perfil_vista"
+            android:id="@+id/edadAnimalTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
             android:text="Edad de tu Animal:"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nRetosTextView_perfil_vista" />
+            app:layout_constraintTop_toBottomOf="@+id/nRetosTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/perfilImageView_perfil_vista"
+        android:id="@+id/perfilImageView"
         android:layout_width="152dp"
         android:layout_height="206dp"
         android:layout_marginStart="40dp"
-        android:layout_marginBottom="32dp"
         android:background="#00FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout_perfil_vista"
         app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="73dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/cambiarButton_perfil_vista"
+        android:id="@+id/cambiarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="72dp"
         android:text="CAMBIAR"
-        app:layout_constraintStart_toEndOf="@+id/perfilImageView_perfil_vista"
-        app:layout_constraintTop_toBottomOf="@+id/nickEjemploTextView_perfil_vista" />
+        tools:layout_editor_absoluteX="236dp"
+        tools:layout_editor_absoluteY="249dp" />
 
     <Button
-        android:id="@+id/shareButton_perfil_vista"
+        android:id="@+id/shareButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="249dp"
         android:text="🔄"
-        app:layout_constraintStart_toEndOf="@+id/cambiarButton_perfil_vista"
-        app:layout_constraintTop_toBottomOf="@+id/nickEjemploTextView_perfil_vista" />
+        app:layout_constraintStart_toEndOf="@+id/cambiarButton"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/balanceTextView_perfil_vista"
+        android:id="@+id/balanceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
         android:text="Balance:"
-        app:layout_constraintStart_toEndOf="@+id/perfilImageView_perfil_vista"
-        app:layout_constraintTop_toTopOf="@+id/perfilImageView_perfil_vista" />
+        tools:layout_editor_absoluteX="236dp"
+        tools:layout_editor_absoluteY="73dp" />
 
     <TextView
-        android:id="@+id/nickTextView_perfil_vista"
+        android:id="@+id/nickTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="Nick:"
-        app:layout_constraintStart_toEndOf="@+id/perfilImageView_perfil_vista"
-        app:layout_constraintTop_toBottomOf="@+id/balanceEjemploText_perfil_vista" />
+        app:layout_constraintTop_toBottomOf="@+id/balanceEjemploTextView"
+        tools:layout_editor_absoluteX="236dp" />
 
     <TextView
-        android:id="@+id/nickEjemploTextView_perfil_vista"
+        android:id="@+id/nickEjemploTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
         android:layout_marginTop="4dp"
         android:text="Furronico"
-        app:layout_constraintStart_toEndOf="@+id/perfilImageView_perfil_vista"
-        app:layout_constraintTop_toBottomOf="@+id/nickTextView_perfil_vista" />
+        app:layout_constraintTop_toBottomOf="@+id/nickTextView"
+        tools:layout_editor_absoluteX="236dp" />
 
     <TextView
-        android:id="@+id/balanceEjemploText_perfil_vista"
+        android:id="@+id/balanceEjemploTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
         android:layout_marginTop="4dp"
         android:text="EJ"
-        app:layout_constraintStart_toEndOf="@+id/perfilImageView_perfil_vista"
-        app:layout_constraintTop_toBottomOf="@+id/balanceTextView_perfil_vista" />
+        app:layout_constraintTop_toBottomOf="@+id/balanceTextView"
+        tools:layout_editor_absoluteX="236dp" />
 
     <ImageView
-        android:id="@+id/furryfound_perfil_vista"
+        android:id="@+id/perfilLogoImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="68dp"
         android:background="#00FFFFFF"
         android:scaleX="2"
         android:scaleY="2"
-        app:layout_constraintEnd_toStartOf="@+id/balanceTextView_perfil_vista"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/furry_funds_logo" />
+        app:srcCompat="@mipmap/furry_funds_logo"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="-12dp" />
 
     <include layout="@layout/toolbar_modificar" />
 
