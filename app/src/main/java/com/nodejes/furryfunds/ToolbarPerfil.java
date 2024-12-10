@@ -2,6 +2,7 @@ package com.nodejes.furryfunds;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -12,14 +13,26 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class ToolbarPerfil extends AppCompatActivity {
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.toolbar_inicio);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.toolbarinicio), (v, insets) -> {
+        setContentView(R.layout.inicio_vista);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.vistaInicio), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        Log.d("butooon","funciona");
+
+        Button buttonPerfil=findViewById(R.id.PerfilButton);
+        buttonPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                perfilView(v);
+                Log.d("butooon","funciona");
+            }
         });
     }
 

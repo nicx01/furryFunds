@@ -30,7 +30,6 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="60dp"
         android:layout_marginBottom="5dp"
-        android:onClick="perfilView"
         android:text="Perfil"
         app:layout_constraintBottom_toBottomOf="@id/toolbarinicio"
         app:layout_constraintEnd_toEndOf="@id/toolbarinicio" />

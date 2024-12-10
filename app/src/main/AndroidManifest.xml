@@ -22,7 +22,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Prueba"/>
+
+        <activity android:name=".BotonPerfilToolbar"/>
+        <activity android:name=".ToolbarPerfil"/>
     </application>
 
 </manifest>
