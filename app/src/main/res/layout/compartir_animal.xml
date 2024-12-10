@@ -6,20 +6,18 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/botoncompartir_compartir_animal"
+        android:id="@+id/shareButton2"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="180dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="160dp"
         android:text="🔄"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_compartir"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCompartir"
+        tools:layout_editor_absoluteX="181dp" />
 
     <ImageView
-        android:id="@+id/imageView_compartir"
+        android:id="@+id/imageViewCompartir"
         android:layout_width="266dp"
         android:layout_height="252dp"
         android:layout_marginStart="145dp"
@@ -40,7 +38,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="300dp"
         android:layout_marginBottom="600dp"
-        android:contentDescription="bottonBackCompartir"
         app:icon="@mipmap/atras"
         app:iconPadding="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageViewFurryLogo_compartir"
+        android:id="@+id/imageViewFurryLogoCompartir"
         android:layout_width="283dp"
         android:layout_height="243dp"
         android:layout_marginBottom="575dp"

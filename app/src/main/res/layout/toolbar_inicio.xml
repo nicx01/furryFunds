@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteX="1dp" />
 
     <Button
-        android:id="@+id/GruposButton_toolbar_inicio"
+        android:id="@+id/GruposButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
@@ -25,7 +25,7 @@
         app:layout_constraintStart_toStartOf="@id/toolbarinicio" />
 
     <Button
-        android:id="@+id/PerfilButton_toolbar_inicio"
+        android:id="@+id/PerfilButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="60dp"
