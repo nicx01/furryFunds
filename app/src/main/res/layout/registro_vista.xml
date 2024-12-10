@@ -19,7 +19,7 @@
 
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/editTextPassword"
             android:layout_width="216dp"
             android:layout_height="79dp"
             android:layout_marginStart="52dp"
@@ -36,6 +36,7 @@
             android:layout_height="65dp"
             android:layout_marginStart="168dp"
             android:layout_marginTop="252dp"
+            android:onClick="iniciarSesion"
             android:text="INICIAR SESION"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +54,7 @@
             />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/editTextNombre"
             android:layout_width="228dp"
             android:layout_height="115dp"
             android:layout_marginStart="48dp"

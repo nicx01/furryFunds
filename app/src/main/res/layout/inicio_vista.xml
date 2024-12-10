@@ -6,16 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/perfilLogoImageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
         android:scaleX="2"
         android:scaleY="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025"
         app:srcCompat="@mipmap/furry_funds_logo"
-        tools:layout_editor_absoluteX="287dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:contentDescription="Botón para los putos ciegos jaja tontos compraos ojos"
+    />
 
     <ScrollView
         android:id="@+id/ScrollViewGruposInicio"
@@ -24,7 +30,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAccessibility="no"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
