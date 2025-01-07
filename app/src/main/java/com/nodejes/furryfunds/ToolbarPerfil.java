@@ -23,16 +23,7 @@ public class ToolbarPerfil extends ComponentActivity {
             return insets;
         });
 
-        Log.d("butooon","funciona");
 
-        Button buttonInicio=findViewById(R.id.InicioButton);
-        buttonInicio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                InicioView(v);
-                Log.d("butooon","funciona");
-            }
-        });
     }
 
     public void InicioView(View view){

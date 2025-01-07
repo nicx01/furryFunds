@@ -10,6 +10,7 @@
         android:id="@+id/buttonAñadirGastoVistaGrupo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="CrearGasto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -24,44 +25,49 @@
         android:layout_width="106dp"
         android:layout_height="65dp"
         android:layout_marginStart="180dp"
-        android:layout_marginTop="56dp"
         android:backgroundTint="@color/verdemediobajo"
         android:text="RETOS"
         android:textColor="@color/verdeoscuro"
         android:textColorLink="@color/verdesuperclaro"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.336"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollViewVistaRetos" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.86" />
 
     <ImageView
         android:id="@+id/perfilLogoImageView3"
         android:layout_width="142dp"
         android:layout_height="112dp"
-        android:layout_marginTop="16dp"
         android:background="#00FFFFFF"
         android:scaleX="2"
         android:scaleY="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toEndOf="@+id/textViewRetosVistaRetos"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.021"
         app:srcCompat="@mipmap/furry_funds_logo" />
 
     <Button
         android:id="@+id/buttonAñadirFurroVistaRetos"
         android:layout_width="110dp"
         android:layout_height="63dp"
-        android:layout_marginTop="56dp"
         android:layout_marginEnd="180dp"
         android:backgroundTint="@color/verdemediobajo"
         android:text="Añadir Furro"
         android:textColor="@color/verdeoscuro"
         android:textColorLink="@color/verdesuperclaro"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.628"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollViewVistaRetos" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.86" />
 
     <TextView
         android:id="@+id/textViewRetosVistaRetos"
@@ -72,14 +78,17 @@
         android:background="@color/verdemediobajo"
         android:text="FURROS"
         android:textAlignment="center"
+        android:textAllCaps="true"
         android:textColor="@color/verdeoscuro"
         android:textColorLink="@color/verdemediobajo"
+        android:textIsSelectable="false"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/scrollViewVistaRetos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <ScrollView
         android:id="@+id/scrollViewVistaRetos"

@@ -28,7 +28,8 @@
         <activity android:name=".CompartirAnimal"/>
         <activity android:name=".ToolbarInicio"/>
         <activity android:name=".ToolbarPerfil"/>
-        <activity android:name=".CrearGrupoVista"/>
+        <activity android:name=".VistaGrupo"/>
+        <activity android:name=".VistaGastos"/>
     </application>
 
 </manifest>

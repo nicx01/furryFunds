@@ -23,56 +23,24 @@ public class PerfilVista extends AppCompatActivity {
             return insets;
         });
 
-        Log.d("butooon","funciona");
-        Button buttonPerfil=findViewById(R.id.InicioButton);
-        buttonPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                InicioView(v);
-                Log.d("butooon","funciona");
-            }
-        });
-
-        Log.d("butooon","funciona");
-        Button buttonCambiar=findViewById(R.id.cambiarButton);
-        buttonCambiar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CambiarIconoView(v);
-                Log.d("butooon","funciona");
-            }
-        });
-
-        Log.d("butooon","funciona");
-        Button buttonShare=findViewById(R.id.shareButton);
-        buttonShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                compartirView(v);
-                Log.d("butooon","funciona");
-            }
-        });
-
-
-
     }
 
-    private void compartirView(View v) {
+    public void compartirView(View v) {
         Intent intent = new Intent(this, CompartirAnimal.class);
         startActivity(intent);
     }
 
-    private void CambiarIconoView(View v) {
+    public void CambiarIconoView(View v) {
         Intent intent = new Intent(this, CambiarIconoVista.class);
         startActivity(intent);
     }
 
-    private void InicioView(View v) {
+    public void InicioView(View v) {
         Intent intent = new Intent(this, ToolbarInicio.class);
         startActivity(intent);
     }
 
-    private void ModificarPerfil(View v){
+    /*public void ModificarPerfil(View v){
         Intent intent = new Intent(this, )
-    }
+    }*/
 }
