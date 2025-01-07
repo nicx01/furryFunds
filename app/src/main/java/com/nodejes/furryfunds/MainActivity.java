@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         TextView editTextNombre = findViewById(R.id.editTextNombre);
         boolean errorNombre=false;
         boolean errorPassword=false;
+        FireBase fireBase =new FireBase();
+        fireBase.addUser();
         if (editTextPassword.getText().length() != 0 && editTextPassword.getText() != ""){
             errorPassword=true;
         }else{
