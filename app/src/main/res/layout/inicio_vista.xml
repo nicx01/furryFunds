@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.025"
         app:srcCompat="@mipmap/furry_funds_logo"
         android:contentDescription="Botón para los putos ciegos jaja tontos compraos ojos"
-    />
+        tools:ignore="HardcodedText" />
 
     <ScrollView
         android:id="@+id/ScrollViewGruposInicio"
@@ -40,4 +40,17 @@
             android:orientation="vertical" />
     </ScrollView>
     <include layout="@layout/toolbar_inicio"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addGrupoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.924"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        app:useCompatPadding="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

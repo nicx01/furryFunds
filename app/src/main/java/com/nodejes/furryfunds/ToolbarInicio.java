@@ -6,13 +6,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.activity.ComponentActivity;
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class ToolbarPerfil extends ComponentActivity {
+public class ToolbarInicio extends AppCompatActivity {
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -25,32 +26,36 @@ public class ToolbarPerfil extends ComponentActivity {
 
         Log.d("butooon","funciona");
 
-        Button buttonInicio=findViewById(R.id.InicioButton);
-        buttonInicio.setOnClickListener(new View.OnClickListener() {
+        Button buttonPerfil=findViewById(R.id.PerfilButton);
+        buttonPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InicioView(v);
+                PerfilView(v);
                 Log.d("butooon","funciona");
             }
         });
+
+
+
+
+
     }
 
-    public void InicioView(View view){
-        Intent intent = new Intent(this, ToolbarInicio.class);
-        startActivity(intent);
+    
+
+    public void PerfilView(View view){
+            Intent intent = new Intent(this, PerfilVista.class);
+            startActivity(intent);
 
     }
-/*
-    public void ModificarView(View view){
+
+    /*public void GruposView(View view){
         Button botonGrupos = findViewById(R.id.GruposButton);
         if(botonGrupos.callOnClick()) {
-            Intent intent = new Intent(this, BotonPerfilToolbar.class);
+            Intent intent = new Intent(this, GruposVista.class);
             startActivity(intent);
         }
     }
-*/
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
-    }
+
+     */
 }

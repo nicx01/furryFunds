@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/compartirAnimal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,12 +10,16 @@
         android:id="@+id/shareButton2"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginStart="181dp"
         android:layout_marginTop="30dp"
+        android:layout_marginEnd="182dp"
         android:layout_marginBottom="160dp"
         android:text="🔄"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewCompartir"
-        tools:layout_editor_absoluteX="181dp" />
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageViewCompartir"
@@ -29,7 +34,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
-    <include layout="@layout/toolbar_perfil"/>
+
+    <include layout="@layout/toolbar_perfil" />
 
     <Button
         android:id="@+id/buttonBackCompartir"
@@ -38,6 +44,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="300dp"
         android:layout_marginBottom="600dp"
+        android:text="Atras"
         app:icon="@mipmap/atras"
         app:iconPadding="2dp"
         app:layout_constraintBottom_toBottomOf="parent"

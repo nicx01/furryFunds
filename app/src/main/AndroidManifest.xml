@@ -23,8 +23,12 @@
         </activity>
 
 
-        <activity android:name=".BotonPerfilToolbar"/>
+        <activity android:name=".PerfilVista"/>
+        <activity android:name=".CambiarIconoVista"/>
+        <activity android:name=".CompartirAnimal"/>
+        <activity android:name=".ToolbarInicio"/>
         <activity android:name=".ToolbarPerfil"/>
+        <activity android:name=".CrearGrupoVista"/>
     </application>
 
 </manifest>
