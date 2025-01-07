@@ -1,6 +1,7 @@
 package com.nodejes.furryfunds;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,4 +20,23 @@ public class CambiarIconoVista extends AppCompatActivity {
             return insets;
         });
     }
+
+
+/*
+    public void cargarIconos(){
+        String[] iconosid = {"E:\\FurryFo\\furryFunds\\app\\src\\main\\res\\mipmap-anydpi-v26\\iconogoku.xml" };
+        for(String icono : iconosid){
+            ImageView imageView = new ImageView(this);
+            imageView.setImageResource(imageId);
+            imageView.setContentDescription("Icono");
+            imageView.setPadding(10, 10, 10, 10);
+        }
+
+    }
+    ImageView imagenperfil = findViewById(imageView3);
+    if (imagenperfil.)
+
+
+ */
 }
+
