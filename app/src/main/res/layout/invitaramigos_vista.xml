@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/FurryUsuarioButtonInvitarAmigos"
+        android:id="@+id/FurryUsuarioButonInvitarAmigos"
         android:layout_width="220dp"
         android:layout_height="65dp"
         android:layout_marginStart="180dp"
@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FurryUsuarioButtonInvitarAmigos" />
+        app:layout_constraintTop_toBottomOf="@+id/FurryUsuarioButonInvitarAmigos" />
 
     <Button
         android:id="@+id/RolButtonInvitarAmigos"
