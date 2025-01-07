@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             errorPassword=false;
         }
         if(errorNombre==true && errorPassword==true) {
-            Intent intent = new Intent(this, ToolbarPerfil.class);
+            Intent intent = new Intent(this, ToolbarInicio.class);
             startActivity(intent);
         }
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             errorPassword=false;
         }
         if(errorNombre==true && errorPassword==true) {
-            Intent intent = new Intent(this, ToolbarPerfil.class);
+            Intent intent = new Intent(this, ToolbarInicio.class);
             startActivity(intent);
         }
     }
