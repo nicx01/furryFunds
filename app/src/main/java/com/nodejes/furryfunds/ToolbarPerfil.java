@@ -23,16 +23,6 @@ public class ToolbarPerfil extends ComponentActivity {
             return insets;
         });
 
-        Log.d("butooon","funciona");
-
-        Button buttonInicio=findViewById(R.id.InicioButton);
-        buttonInicio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                InicioView(v);
-                Log.d("butooon","funciona");
-            }
-        });
     }
 
     public void InicioView(View view){
@@ -40,15 +30,15 @@ public class ToolbarPerfil extends ComponentActivity {
         startActivity(intent);
 
     }
-/*
+
     public void ModificarView(View view){
         Button botonGrupos = findViewById(R.id.GruposButton);
         if(botonGrupos.callOnClick()) {
-            Intent intent = new Intent(this, BotonPerfilToolbar.class);
+            Intent intent = new Intent(this, PerfilVista.class);
             startActivity(intent);
         }
     }
-*/
+
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);

@@ -12,35 +12,20 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class PerfilVista extends AppCompatActivity {
+public class VistaGrupo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.perfil_vista);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.vistaPerfil), (v, insets) -> {
+        setContentView(R.layout.vistagrupo_vista);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.vistaGrupo), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
     }
-
-    public void compartirView(View v) {
-        Intent intent = new Intent(this, CompartirAnimal.class);
+    public void CrearGasto(View v) {
+        Intent intent = new Intent(this, VistaGastos.class);
         startActivity(intent);
     }
-
-    public void CambiarIconoView(View v) {
-        Intent intent = new Intent(this, CambiarIconoVista.class);
-        startActivity(intent);
-    }
-
-    public void InicioView(View v) {
-        Intent intent = new Intent(this, ToolbarInicio.class);
-        startActivity(intent);
-    }
-
-    /*public void ModificarPerfil(View v){
-        Intent intent = new Intent(this, )
-    }*/
 }
