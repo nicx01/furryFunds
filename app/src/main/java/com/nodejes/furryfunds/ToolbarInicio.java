@@ -24,21 +24,6 @@ public class ToolbarInicio extends AppCompatActivity {
             return insets;
         });
 
-        Log.d("butooon","funciona");
-
-        Button buttonPerfil=findViewById(R.id.PerfilButton);
-        buttonPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PerfilView(v);
-                Log.d("butooon","funciona");
-            }
-        });
-
-
-
-
-
     }
 
     
@@ -49,13 +34,10 @@ public class ToolbarInicio extends AppCompatActivity {
 
     }
 
-    /*public void GruposView(View view){
-        Button botonGrupos = findViewById(R.id.GruposButton);
-        if(botonGrupos.callOnClick()) {
-            Intent intent = new Intent(this, GruposVista.class);
+    public void GruposView(View view){
+            Intent intent = new Intent(this, VistaGrupo.class);
             startActivity(intent);
-        }
     }
 
-     */
+
 }

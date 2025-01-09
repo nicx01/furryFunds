@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
         android:layout_marginBottom="5dp"
+        android:onClick="InicioView"
         android:text="Inicio"
         app:layout_constraintBottom_toBottomOf="@id/toolbarModificar"
         app:layout_constraintStart_toStartOf="@id/toolbarModificar" />
@@ -30,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="60dp"
         android:layout_marginBottom="5dp"
+        android:onClick="ModificarView"
         android:text="Modificar"
         app:layout_constraintBottom_toBottomOf="@id/toolbarModificar"
         app:layout_constraintEnd_toEndOf="@id/toolbarModificar" />
