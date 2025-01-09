@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "918568865374",
+    "project_id": "furryfunds-29d6b",
+    "storage_bucket": "furryfunds-29d6b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918568865374:android:7736558d50543a9901aecf",
+        "android_client_info": {
+          "package_name": "com.nodejes.furryfunds"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7dJ7WUoNkw5lVrf5X1HLSrH9JqDSneZc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
