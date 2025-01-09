@@ -3,6 +3,7 @@ package com.nodejes.furryfunds;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -32,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
         TextView editTextNombre = findViewById(R.id.editTextNombre);
         boolean errorNombre=false;
         boolean errorPassword=false;
-        FireBase fireBase =new FireBase();
-        fireBase.addUser();
         if (editTextPassword.getText().length() != 0 && editTextPassword.getText() != ""){
             errorPassword=true;
         }else{
@@ -46,33 +45,63 @@ public class MainActivity extends AppCompatActivity {
             editTextNombre.setError("Nombre inválido");
             errorPassword=false;
         }
-        if(errorNombre==true && errorPassword==true) {
-            Intent intent = new Intent(this, ToolbarInicio.class);
-            startActivity(intent);
+        if (errorNombre && errorPassword) {
+            FireBase fireBase = new FireBase();
+            fireBase.addUser(editTextNombre.getText().toString(), editTextPassword.getText().toString(), new FirebaseCallback() {
+                @Override
+                public void onCheckComplete(boolean exists) {
+                    if (exists) {
+                        Log.d("TAG", "El usuario existe y se ha autenticado correctamente.");
+                        Intent intent = new Intent(getApplicationContext(), ToolbarInicio.class);
+                        startActivity(intent);
+                    } else {
+                        Log.w("TAG", "El usuario no existe o las credenciales son incorrectas.");
+                        editTextNombre.setError("ERROR");
+                    }
+                }
+            });
         }
 
     }
     public void iniciarSesion(View view) {
         TextView editTextPassword = findViewById(R.id.editTextPassword);
         TextView editTextNombre = findViewById(R.id.editTextNombre);
-        boolean errorNombre=false;
-        boolean errorPassword=false;
-        if (editTextPassword.getText().length() != 0 && editTextPassword.getText() != ""){
-            errorPassword=true;
-        }else{
+        boolean errorNombre = false;
+        boolean errorPassword = false;
+
+        if (editTextPassword.getText().length() != 0 && !editTextPassword.getText().toString().equals("")) {
+            errorPassword = true;
+        } else {
             editTextPassword.setError("Contraseña inválida");
-            errorPassword=false;
+            errorPassword = false;
         }
-        if(editTextNombre.getText().length() != 0 && editTextNombre.getText() != ""){
-            errorNombre=true;
-        }else{
+
+        if (editTextNombre.getText().length() != 0 && !editTextNombre.getText().toString().equals("")) {
+            errorNombre = true;
+        } else {
             editTextNombre.setError("Nombre inválido");
-            errorPassword=false;
+            errorPassword = false;
         }
-        if(errorNombre==true && errorPassword==true) {
-            Intent intent = new Intent(this, ToolbarInicio.class);
-            startActivity(intent);
+
+        if (errorNombre && errorPassword) {
+            FireBase fireBase = new FireBase();
+            fireBase.signInUser(editTextNombre.getText().toString(), editTextPassword.getText().toString(), new FirebaseCallback() {
+                @Override
+                public void onCheckComplete(boolean exists) {
+                    if (exists) {
+                        Log.d("TAG", "El usuario existe y se ha autenticado correctamente.");
+                        Intent intent = new Intent(getApplicationContext(), ToolbarInicio.class);
+                        startActivity(intent);
+                    } else {
+                        Log.w("TAG", "El usuario no existe o las credenciales son incorrectas.");
+                        editTextNombre.setError("Nombre incorrecto");
+                        editTextPassword.setError("Contraseña incorrecta");
+
+                    }
+                }
+            });
         }
     }
+
 
 }
