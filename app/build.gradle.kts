@@ -42,4 +42,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("com.google.firebase:firebase-analytics-ktx:21.2.0")
+    implementation("com.google.firebase:firebase-auth-ktx:22.0.0")
 }
+
+apply(plugin = "com.google.gms.google-services")
