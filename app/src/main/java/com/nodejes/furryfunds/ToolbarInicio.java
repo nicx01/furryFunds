@@ -26,12 +26,9 @@ public class ToolbarInicio extends AppCompatActivity {
 
     }
 
-    
-
     public void PerfilView(View view){
             Intent intent = new Intent(this, PerfilVista.class);
             startActivity(intent);
-
     }
 
     public void GruposView(View view){
