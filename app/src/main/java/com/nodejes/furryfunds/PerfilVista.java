@@ -5,12 +5,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class PerfilVista extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,9 @@ public class PerfilVista extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        TextView email=findViewById(R.id.correoEjemploTextView);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        email.setText(user.getEmail());
 
     }
 
