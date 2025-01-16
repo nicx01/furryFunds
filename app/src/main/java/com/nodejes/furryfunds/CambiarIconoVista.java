@@ -43,10 +43,11 @@ public class CambiarIconoVista extends AppCompatActivity {
     public void cambiarIconoPerfil(int imagenseleccionada){
         Log.w("ASDFAS","ASDF");
         ImageView imagen = findViewById(R.id.imageView3);
-    if(imagenseleccionada!=0){
-        imagen.setImageResource(imagenseleccionada);
+        if (imagenseleccionada != 0) {
+            imagen.setImageResource(imagenseleccionada);
+        }
     }
-    }
+
     public void InicioViewIcono (View v) {
         Intent intent = new Intent(this, VistaInicio.class);
         startActivity(intent);
