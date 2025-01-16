@@ -29,7 +29,13 @@ public class PerfilVista extends AppCompatActivity {
         TextView email=findViewById(R.id.correoEjemploTextView);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         email.setText(user.getEmail());
+        Button eliminarCuenta=findViewById(R.id.eliminarCuentaButton);
+        eliminarCuenta.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                DeleteAccount();
+            }
 
+        });
     }
 
     public void CompartirView(View v) {
@@ -50,4 +56,29 @@ public class PerfilVista extends AppCompatActivity {
     public void ModificarPerfil(View v){
         Intent intent = new Intent(this, PerfilVista.class);
     }
+
+    public void DeleteAccount() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null) {
+            user.delete()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Intent intent = new Intent(this, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Log.e("TAG", "Error al eliminar la cuenta: " + task.getException().getMessage());
+                        }
+                    });
+        } else {
+            Log.e("TAG", "No hay usuario autenticado.");
+        }
+    }
+
+
+    /*public void ModificarPerfil(View v){
+        Intent intent = new Intent(this, )
+    }*/
 }
