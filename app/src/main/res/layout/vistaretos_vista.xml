@@ -84,4 +84,17 @@
     </ScrollView>
 
     <include layout="@layout/toolbar_perfil" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="51dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="52dp"
+        android:backgroundTint="@color/verdemediobajo"
+        android:contentDescription='""'
+        app:layout_constraintStart_toEndOf="@+id/buttonAñadirFurroVistaRetos"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewVistaRetos"
+        app:srcCompat="@mipmap/equis_foreground" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
