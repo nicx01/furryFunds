@@ -31,7 +31,7 @@ public class VistaGrupo extends AppCompatActivity {
     }
 
     public void RetosView(View v) {
-        Intent intent = new Intent(this, VistaRetos.class);
+        Intent intent = new Intent(this, VistaRetoIndividual.class);
         startActivity(intent);
     }
 
