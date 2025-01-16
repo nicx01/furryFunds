@@ -2,9 +2,12 @@
 package com.nodejes.furryfunds;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +18,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.gridlayout.widget.GridLayout;
 
 public class CambiarIconoVista extends AppCompatActivity {
+    int  imagenseleccionada =0;
+    ImageButton lastSelectedButton = null;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -25,8 +30,22 @@ public class CambiarIconoVista extends AppCompatActivity {
 
             return insets;
         });
-        Log.i("Hola","Hola");
+
         ponerImagenes();
+        Button cambiar = findViewById(R.id.buttonCambiarIcono);
+        cambiar.setOnClickListener(v -> {
+
+           cambiarIconoPerfil(imagenseleccionada);
+        });
+
+
+    }
+    public void cambiarIconoPerfil(int imagenseleccionada){
+        Log.w("ASDFAS","ASDF");
+        ImageView imagen = findViewById(R.id.imageView3);
+    if(imagenseleccionada!=0){
+        imagen.setImageResource(imagenseleccionada);
+    }
     }
     public void InicioViewIcono (View v) {
         Intent intent = new Intent(this, VistaInicio.class);
@@ -37,6 +56,10 @@ public class CambiarIconoVista extends AppCompatActivity {
         Intent intent = new Intent(this, PerfilVista.class);
         startActivity(intent);
     }
+
+
+
+
       public void ponerImagenes(){
 
         GridLayout gridLayout = findViewById(R.id.gridLayout);
@@ -48,15 +71,25 @@ public class CambiarIconoVista extends AppCompatActivity {
         };
 
         for (int i = 0; i < iconosId.length; i++) {
+            ImageButton imageButton = new ImageButton(this);
+            imageButton.setImageResource(iconosId[i]);
+            imageButton.setPadding(10,10,10,10);
+            imageButton.setBackgroundColor(Color.TRANSPARENT);
 
-            ImageView imageView = new ImageView(this);
-            imageView.setImageResource(iconosId[i]);
-            imageView.setPadding(10, 10, 10, 10);
-            gridLayout.addView(imageView);
+            final int iconId = iconosId[i];
+            imageButton.setOnClickListener(v -> {
+                if (lastSelectedButton != null) {
+                    lastSelectedButton.setBackgroundColor(Color.TRANSPARENT); // Fondo por defecto
+                }
+                imagenseleccionada = iconId;
+                imageButton.setBackgroundColor(Color.rgb(0, 0, 255));
+               // cambiarIconoPerfil(imagenseleccionada);
+                lastSelectedButton = imageButton;
+            });
+
+            gridLayout.addView(imageButton);
         }
-        }
-
-
+      }
 }
 
 

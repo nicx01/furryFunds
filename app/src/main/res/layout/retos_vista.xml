@@ -7,38 +7,57 @@
     android:layout_height="match_parent"
     android:background="@color/verdemediobajo">
 
-    <TextView
-        android:id="@+id/textRetoITem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="328dp"
-        android:layout_marginBottom="8dp"
-        android:text="Reto 1:"
-        android:textColorLink="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textFurroNickReto"
+    <EditText
+        android:id="@+id/plaintextreto"
+        android:layout_width="121dp"
+        android:layout_height="54dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Reto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/toggleButtonMarcaRetoHechoSinHacer"
+        app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toEndOf="@+id/imageButton2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/plaintextFurronickreto"
+        app:layout_constraintVertical_bias="0.015" />
+
+    <EditText
+        android:id="@+id/plaintextFurronickreto"
+        android:layout_width="124dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="310dp"
+        android:layout_marginEnd="92dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Furro"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/toggleButtonMarcaRetoHechoSinHacer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toEndOf="@+id/textFurroNickReto"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textFurroNickReto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="32dp"
         android:text="FurroNick"
         android:textColorLink="@color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2"
-        app:layout_constraintTop_toBottomOf="@+id/textRetoITem" />
+        app:layout_constraintBottom_toTopOf="@+id/plaintextreto"
+        app:layout_constraintEnd_toStartOf="@+id/plaintextreto"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageButton2" />
 
     <TextView
         android:id="@+id/textDescripcionReto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:text="Reto"
         android:textColorLink="@color/black"
         android:textStyle="bold"
@@ -47,10 +66,10 @@
 
     <ToggleButton
         android:id="@+id/toggleButtonMarcaRetoHechoSinHacer"
-        android:layout_width="126dp"
+        android:layout_width="71dp"
         android:layout_height="110dp"
         android:layout_marginTop="308dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="313dp"
         android:backgroundTint="@color/verdesuperoscuro"
         android:text="ToggleButton"
@@ -61,22 +80,22 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.255" />
 
     <ImageButton
         android:id="@+id/imageButton2"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:layout_marginStart="34dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="310dp"
-        android:layout_marginEnd="23dp"
         android:layout_marginBottom="311dp"
         android:backgroundTint="@color/verdeoscuro"
         android:contentDescription="boton ajustes"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textRetoITem"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/ajustes_foreground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
