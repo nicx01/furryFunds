@@ -6,6 +6,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/PerfilButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:onClick="PerfilButton"
+        android:text="Perfil"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.786"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.986" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarinicio3"
+        android:layout_width="411dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="9dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addGrupoButton"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/GruposButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:onClick="AñadirGrupo"
+        android:text="Grupos"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.986" />
+
     <ImageButton
         android:id="@+id/perfilLogoImageView2"
         android:layout_width="wrap_content"
@@ -39,7 +84,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
     </ScrollView>
-    <include layout="@layout/toolbar_inicio"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addGrupoButton"
@@ -52,5 +96,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.924"
         app:srcCompat="@android:drawable/ic_menu_add"
-        app:useCompatPadding="true" />
+        app:useCompatPadding="true"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

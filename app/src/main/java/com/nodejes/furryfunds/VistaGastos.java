@@ -21,4 +21,14 @@ public class VistaGastos extends AppCompatActivity {
             return insets;
         });
     }
+
+    public void InicioViewGasto(View v) {
+        Intent intent = new Intent(this, VistaInicio.class);
+        startActivity(intent);
+    }
+
+    public void PerfilViewGasto(View v) {
+        Intent intent = new Intent(this, PerfilVista.class);
+        startActivity(intent);
+    }
 }

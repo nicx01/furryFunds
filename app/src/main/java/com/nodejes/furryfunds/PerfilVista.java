@@ -32,7 +32,7 @@ public class PerfilVista extends AppCompatActivity {
 
     }
 
-    public void compartirView(View v) {
+    public void CompartirView(View v) {
         Intent intent = new Intent(this, CompartirAnimal.class);
         startActivity(intent);
     }
@@ -43,11 +43,11 @@ public class PerfilVista extends AppCompatActivity {
     }
 
     public void InicioView(View v) {
-        Intent intent = new Intent(this, ToolbarInicio.class);
+        Intent intent = new Intent(this, VistaInicio.class);
         startActivity(intent);
     }
 
-    /*public void ModificarPerfil(View v){
-        Intent intent = new Intent(this, )
-    }*/
+    public void ModificarPerfil(View v){
+        Intent intent = new Intent(this, PerfilVista.class);
+    }
 }
