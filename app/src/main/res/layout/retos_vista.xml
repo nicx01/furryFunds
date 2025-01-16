@@ -78,5 +78,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ajustes_foreground" />
-    <include layout="@layout/toolbar_perfil"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

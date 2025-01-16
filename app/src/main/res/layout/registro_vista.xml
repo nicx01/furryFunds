@@ -25,7 +25,7 @@
             android:layout_marginStart="52dp"
             android:layout_marginTop="152dp"
             android:ems="10"
-            android:hint="contraseña"
+            android:hint="Contraseña"
             android:inputType="textPassword"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -60,7 +60,7 @@
             android:layout_marginStart="48dp"
             android:layout_marginTop="24dp"
             android:ems="10"
-            android:hint="nombre"
+            android:hint="Correo Electronico"
             android:inputType="text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

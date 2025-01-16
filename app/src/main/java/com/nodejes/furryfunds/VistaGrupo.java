@@ -28,4 +28,14 @@ public class VistaGrupo extends AppCompatActivity {
         Intent intent = new Intent(this, VistaGastos.class);
         startActivity(intent);
     }
+
+    public void InicioViewGrupo(View v) {
+        Intent intent = new Intent(this, VistaInicio.class);
+        startActivity(intent);
+    }
+
+    public void PerfilViewGrupo(View v) {
+        Intent intent = new Intent(this, PerfilVista.class);
+        startActivity(intent);
+    }
 }

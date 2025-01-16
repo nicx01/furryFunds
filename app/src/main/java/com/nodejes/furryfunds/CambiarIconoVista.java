@@ -1,8 +1,10 @@
 
 package com.nodejes.furryfunds;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -26,6 +28,15 @@ public class CambiarIconoVista extends AppCompatActivity {
         Log.i("Hola","Hola");
         ponerImagenes();
     }
+    public void InicioViewIcono (View v) {
+        Intent intent = new Intent(this, VistaInicio.class);
+        startActivity(intent);
+    }
+
+    public void PerfilViewIcono(View v) {
+        Intent intent = new Intent(this, PerfilVista.class);
+        startActivity(intent);
+    }
       public void ponerImagenes(){
 
         GridLayout gridLayout = findViewById(R.id.gridLayout);
@@ -44,6 +55,8 @@ public class CambiarIconoVista extends AppCompatActivity {
             gridLayout.addView(imageView);
         }
         }
-    }
+
+
+}
 
 

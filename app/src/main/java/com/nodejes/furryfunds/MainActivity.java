@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onCheckComplete(boolean exists) {
                     if (exists) {
                         Log.d("TAG", "El usuario existe y se ha autenticado correctamente.");
-                        Intent intent = new Intent(getApplicationContext(), ToolbarInicio.class);
+                        Intent intent = new Intent(getApplicationContext(), VistaInicio.class);
                         startActivity(intent);
                     } else {
                         Log.w("TAG", "El usuario no existe o las credenciales son incorrectas.");
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onCheckComplete(boolean exists) {
                     if (exists) {
                         Log.d("TAG", "El usuario existe y se ha autenticado correctamente.");
-                        Intent intent = new Intent(getApplicationContext(), ToolbarInicio.class);
+                        Intent intent = new Intent(getApplicationContext(), VistaInicio.class);
                         startActivity(intent);
                     } else {
                         Log.w("TAG", "El usuario no existe o las credenciales son incorrectas.");

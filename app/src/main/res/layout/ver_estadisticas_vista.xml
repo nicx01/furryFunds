@@ -26,7 +26,6 @@
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="42dp" />
 
-    <include layout="@layout/toolbar_perfil" />
 
     <ScrollView
         android:layout_width="290dp"

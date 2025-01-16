@@ -1,6 +1,8 @@
 package com.nodejes.furryfunds;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,5 +21,15 @@ public class CompartirAnimal extends AppCompatActivity {
             return insets;
         });
 
+    }
+
+    public void InicioViewCompartirAnimal(View v) {
+        Intent intent = new Intent(this, VistaInicio.class);
+        startActivity(intent);
+    }
+
+    public void PerfilViewGrupoCompartirAnimal(View v) {
+        Intent intent = new Intent(this, PerfilVista.class);
+        startActivity(intent);
     }
 }

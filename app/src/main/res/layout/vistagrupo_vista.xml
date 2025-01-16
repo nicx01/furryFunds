@@ -10,6 +10,7 @@
         android:id="@+id/buttonAñadirGastoVistaGrupo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="CrearGasto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -56,7 +57,7 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="180dp"
         android:backgroundTint="@color/verdemediobajo"
-        android:text="Añadir Furro"
+        android:text="Gastos"
         android:textColor="@color/verdeoscuro"
         android:textColorLink="@color/verdesuperclaro"
         android:textStyle="bold"
@@ -106,6 +107,50 @@
             android:orientation="vertical" />
     </ScrollView>
 
-    <include layout="@layout/toolbar_perfil"/>
+    <Button
+        android:id="@+id/PerfilButtonVistaGrupo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:onClick="PerfilViewGrupo"
+        android:text="Perfil"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.786"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.986" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarinicio3"
+        android:layout_width="411dp"
+        android:layout_height="58dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/InicioButtonVistaGrupo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:onClick="InicioViewGrupo"
+        android:text="Inicio"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.986" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
