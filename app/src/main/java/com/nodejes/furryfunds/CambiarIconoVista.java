@@ -64,8 +64,6 @@ public class CambiarIconoVista extends AppCompatActivity {
             imageButton.setPadding(10,10,10,10);
             imageButton.setBackgroundColor(Color.TRANSPARENT);
 
-
-
             final int iconId = iconosId[i];
             imageButton.setOnClickListener(v -> {
                 if (lastSelectedButton != null) {
@@ -76,7 +74,6 @@ public class CambiarIconoVista extends AppCompatActivity {
                // cambiarIconoPerfil(imagenseleccionada);
                 lastSelectedButton = imageButton;
             });
-
 
             gridLayout.addView(imageButton);
         }
