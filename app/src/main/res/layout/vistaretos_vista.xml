@@ -38,6 +38,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="180dp"
         android:backgroundTint="@color/verdemediobajo"
+        android:onClick="CrearReto"
         android:text="Añadir Reto"
         android:textColor="@color/verdeoscuro"
         android:textColorLink="@color/verdesuperclaro"
