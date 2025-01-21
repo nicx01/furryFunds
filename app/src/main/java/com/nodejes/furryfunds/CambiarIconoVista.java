@@ -112,7 +112,10 @@ public class CambiarIconoVista extends AppCompatActivity {
 
         int[] iconosId = {
                 R.mipmap.iconogoku,
-                R.mipmap.iconohormiga
+                R.mipmap.iconohormiga,
+                R.mipmap.iconohomer,
+                R.mipmap.iconobender,
+                R.mipmap.iconofurry
         };
 
         for (int i = 0; i < iconosId.length; i++) {
