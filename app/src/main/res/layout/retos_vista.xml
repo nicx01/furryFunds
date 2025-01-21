@@ -9,9 +9,12 @@
 
     <TextView
         android:id="@+id/textViewRetos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="102dp"
+        android:layout_height="51dp"
         android:text="Retos"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
@@ -21,68 +24,67 @@
 
     <EditText
         android:id="@+id/plaintextreto"
-        android:layout_width="121dp"
-        android:layout_height="54dp"
+        android:layout_width="124dp"
+        android:layout_height="55dp"
         android:ems="10"
         android:inputType="text"
         android:text="Reto"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/toggleButtonMarcaRetoHechoSinHacer"
-        app:layout_constraintHorizontal_bias="0.923"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toEndOf="@+id/imageButton2"
-        app:layout_constraintTop_toBottomOf="@+id/plaintextFurronickreto"
-        app:layout_constraintVertical_bias="0.015" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.535" />
 
     <EditText
         android:id="@+id/plaintextFurronickreto"
         android:layout_width="124dp"
         android:layout_height="48dp"
-        android:layout_marginTop="310dp"
-        android:layout_marginEnd="92dp"
         android:ems="10"
         android:inputType="text"
         android:text="Furro"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/toggleButtonMarcaRetoHechoSinHacer"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toEndOf="@+id/textFurroNickReto"
+        app:layout_constraintHorizontal_bias="0.679"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.45" />
 
     <TextView
         android:id="@+id/textFurroNickReto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="32dp"
         android:text="FurroNick"
         android:textColorLink="@color/black"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/plaintextreto"
-        app:layout_constraintEnd_toStartOf="@+id/plaintextreto"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.356"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.455" />
 
     <TextView
         android:id="@+id/textDescripcionReto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
         android:text="Reto"
         android:textColorLink="@color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2"
-        app:layout_constraintTop_toBottomOf="@+id/textFurroNickReto" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.339"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.508" />
 
     <ToggleButton
         android:id="@+id/toggleButtonMarcaRetoHechoSinHacer"
         android:layout_width="71dp"
         android:layout_height="110dp"
-        android:layout_marginTop="308dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="313dp"
         android:backgroundTint="@color/verdesuperoscuro"
         android:text="ToggleButton"
         android:textColor="@color/verdemediobajo"
@@ -92,22 +94,23 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.255" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <ImageButton
         android:id="@+id/imageButton2"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="310dp"
-        android:layout_marginBottom="311dp"
         android:backgroundTint="@color/verdeoscuro"
         android:contentDescription="boton ajustes"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.023"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.495"
         app:srcCompat="@mipmap/ajustes_foreground" />
 
     <Button
@@ -154,5 +157,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.986" />
+
+    <Button
+        android:id="@+id/buttonCrearReto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.797" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,13 @@ public class VistaGrupo extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        Button botonRetosView = findViewById(R.id.buttonAñadirRetoVistaRetos2);
+        botonRetosView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RetosView(view);
+            }
+        });
     }
 
     public void GastosView(View v) {
@@ -31,7 +37,7 @@ public class VistaGrupo extends AppCompatActivity {
     }
 
     public void RetosView(View v) {
-        Intent intent = new Intent(this, VistaRetoIndividual.class);
+        Intent intent = new Intent(this, VistaRetos.class);
         startActivity(intent);
     }
 

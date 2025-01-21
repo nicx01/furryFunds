@@ -7,99 +7,133 @@
     android:layout_height="match_parent"
     android:background="@color/verdemediobajo">
 
+    <Button
+        android:id="@+id/buttonCrearGasto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.775" />
+
+    <TextView
+        android:id="@+id/textViewGastos"
+        android:layout_width="102dp"
+        android:layout_height="51dp"
+        android:text="Gastos"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.173" />
+
     <EditText
         android:id="@+id/plaintextfurronickgasto"
-        android:layout_width="164dp"
-        android:layout_height="48dp"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
         android:ems="10"
         android:inputType="text"
         android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.495" />
+        app:layout_constraintVertical_bias="0.502" />
 
     <TextView
         android:id="@+id/titulogasto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="310dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="296dp"
         android:text="Título"
         android:textColorLink="@color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imagebuttonmodificargasto"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textFurroNickGasto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:text="FurroNick"
-        android:textColorLink="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imagebuttonmodificargasto"
-        app:layout_constraintTop_toBottomOf="@+id/titulogasto" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.007" />
 
     <TextView
         android:id="@+id/textCantidadgasto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
         android:text="Cantidad"
         android:textColorLink="@color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imagebuttonmodificargasto"
-        app:layout_constraintTop_toBottomOf="@+id/textFurroNickGasto" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.364"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.546" />
+
+    <TextView
+        android:id="@+id/textFurroNickGasto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FurroNick"
+        android:textColorLink="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.385"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.487" />
 
     <ImageButton
         android:id="@+id/imagebuttonmodificargasto"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="310dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="311dp"
         android:backgroundTint="@color/verdeoscuro"
         android:contentDescription="boton ajustes"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/titulogasto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ajustes_foreground" />
 
     <EditText
         android:id="@+id/plaintexttitulo"
-        android:layout_width="164dp"
-        android:layout_height="48dp"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
         android:ems="10"
         android:inputType="text"
         android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintHorizontal_bias="0.916"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintVertical_bias="0.432" />
 
     <EditText
         android:id="@+id/plaintextcantidadgasto"
-        android:layout_width="164dp"
-        android:layout_height="48dp"
+        android:layout_width="160dp"
+        android:layout_height="43dp"
         android:ems="10"
         android:inputType="text"
         android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintHorizontal_bias="0.912"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.554" />
+        app:layout_constraintVertical_bias="0.584" />
 
     <Button
         android:id="@+id/PerfilButtonVistaGasto"
@@ -145,17 +179,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.986" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gastos"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.192" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

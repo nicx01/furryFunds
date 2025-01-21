@@ -24,12 +24,12 @@ public class VistaInicio extends ComponentActivity {
 
     }
     public void AñadirGrupo(View view){
-            Intent intent = new Intent(this, VistaGrupo.class);
-            startActivity(intent);
+        Intent intent = new Intent(this, VistaGrupo.class);
+        startActivity(intent);
     }
 
     public void PerfilButton(View view){
-            Intent intent = new Intent(this, PerfilVista.class);
-            startActivity(intent);
+        Intent intent = new Intent(this, PerfilVista.class);
+        startActivity(intent);
     }
 }

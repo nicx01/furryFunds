@@ -26,11 +26,11 @@
         <activity android:name=".PerfilVista"/>
         <activity android:name=".CambiarIconoVista"/>
         <activity android:name=".CompartirAnimal"/>
-        <activity android:name=".ToolbarInicio"/>
-        <activity android:name=".ToolbarPerfil"/>
         <activity android:name=".VistaInicio"/>
         <activity android:name=".VistaGrupo"/>
         <activity android:name=".VistaGastos"/>
+        <activity android:name=".VistaRetos"/>
+        <activity android:name=".VistaRetoIndividual"/>
     </application>
 
 </manifest>
