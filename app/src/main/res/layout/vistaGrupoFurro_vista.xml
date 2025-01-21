@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vistafurros"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/perfilLogoImageViewFurrosGrupo"
+        android:layout_width="142dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="18dp"
+        android:background="#00FFFFFF"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewFurrosGrupo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/furry_funds_logo" />
+
+    <Button
+        android:id="@+id/buttonAñadirFurroFurrosGrupo"
+        android:layout_width="160dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="180dp"
+        android:backgroundTint="@color/verdemediobajo"
+        android:text="Añadir Gastos"
+        android:textColor="@color/verdeoscuro"
+        android:textColorLink="@color/verdesuperclaro"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewFurrosGrupo" />
+
+    <TextView
+        android:id="@+id/textViewFurrosGrupo"
+        android:layout_width="91dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginBottom="52dp"
+        android:background="@color/verdemediobajo"
+        android:text="GASTOS"
+        android:textAlignment="center"
+        android:textColor="@color/verdeoscuro"
+        android:textColorLink="@color/verdemediobajo"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scrollViewFurrosGrupo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollViewFurrosGrupo"
+        android:layout_width="252dp"
+        android:layout_height="338dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="24dp"
+        android:contentDescription="retos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFurrosGrupo">
+
+        <LinearLayout
+            android:id="@+id/vistaVistaGastos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical" />
+    </ScrollView>
+
+
+    <ImageButton
+        android:id="@+id/imageButtonBorrarFurrosGrupo"
+        android:layout_width="51dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="52dp"
+        android:backgroundTint="@color/verdemediobajo"
+        android:contentDescription='""'
+        app:layout_constraintStart_toEndOf="@+id/buttonAñadirFurroFurrosGrupo"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewFurrosGrupo"
+        app:srcCompat="@mipmap/equis_foreground" />
+
+    <ImageButton
+        android:id="@+id/imageButtonFurrosGrupo"
+        android:layout_width="140dp"
+        android:layout_height="112dp"
+        android:backgroundTint="#00FFFFFF"
+        android:contentDescription="BotonAtrasVistaGastos"
+        app:layout_constraintBottom_toTopOf="@id/textViewFurrosGrupo"
+        app:layout_constraintEnd_toStartOf="@+id/textViewFurrosGrupo"
+        app:srcCompat="@mipmap/atras_foreground" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
