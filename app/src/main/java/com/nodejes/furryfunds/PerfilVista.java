@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class PerfilVista extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +39,31 @@ public class PerfilVista extends AppCompatActivity {
             }
 
         });
-    }
+        cargarImagenPerfil();
 
+    }
+    public void cargarImagenPerfil() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
+            DatabaseReference myRef = database.getReference("usuarios/" + user.getUid() + "/imagenSeleccionada");
+
+            myRef.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Integer imagenSeleccionada = task.getResult().getValue(Integer.class);
+                    if (imagenSeleccionada != null) {
+                        // Si se encuentra una imagen seleccionada, actualizamos el ImageView
+                        ImageView perfilImageView = findViewById(R.id.perfilImageView);
+                        perfilImageView.setImageResource(imagenSeleccionada);
+                    }
+                } else {
+                    Log.e("Firebase", "Error al recuperar la imagen seleccionada: " + task.getException().getMessage());
+                }
+            });
+        } else {
+            Log.e("Firebase", "No hay usuario autenticado.");
+        }
+    }
     public void CompartirView(View v) {
         Intent intent = new Intent(this, CompartirAnimal.class);
         startActivity(intent);
