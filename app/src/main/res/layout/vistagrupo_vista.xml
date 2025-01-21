@@ -27,7 +27,6 @@
         android:layout_height="65dp"
         android:layout_marginStart="180dp"
         android:backgroundTint="@color/verdemediobajo"
-        android:onClick="GastosView"
         android:text="RETOS"
         android:textColor="@color/verdeoscuro"
         android:textColorLink="@color/verdesuperclaro"
