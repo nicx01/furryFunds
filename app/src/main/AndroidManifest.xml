@@ -31,6 +31,9 @@
         <activity android:name=".VistaGastos"/>
         <activity android:name=".VistaRetos"/>
         <activity android:name=".VistaRetoIndividual"/>
+        <activity android:name=".VistaCrearGrupo"/>
+        <activity android:name=".VistaBalance"/>
+        <activity android:name=".VistaEstadisticas"/>
     </application>
 
 </manifest>
