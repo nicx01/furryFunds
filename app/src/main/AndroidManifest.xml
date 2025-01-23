@@ -41,6 +41,9 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <activity android:name=".VistaCrearGrupo"/>
+        <activity android:name=".VistaBalance"/>
+        <activity android:name=".VistaEstadisticas"/>
     </application>
 
 </manifest>

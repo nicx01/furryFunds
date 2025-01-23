@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import org.w3c.dom.Text;
 
 public class VistaGrupo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,20 @@ public class VistaGrupo extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        TextView nombreGrupo = findViewById(R.id.textViewRetosVistaRetos);
+
+        Intent intent = getIntent();
+        String groupName = intent.getStringExtra("GROUP_NAME");
+        int groupId = intent.getIntExtra("GROUP_ID", -1); // -1 es un valor por defecto
+
+        // Mostrar el nombre del grupo en el TextView
+        if (groupName != null) {
+            nombreGrupo.setText(groupName);
+        } else {
+            nombreGrupo.setText("Grupo desconocido");
+        }
+
         Button botonRetosView = findViewById(R.id.buttonAñadirRetoVistaRetos2);
         botonRetosView.setOnClickListener(new View.OnClickListener() {
             @Override
