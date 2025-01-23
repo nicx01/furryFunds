@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -109,6 +110,7 @@ public class CambiarIconoVista extends AppCompatActivity {
     public void ponerImagenes() {
         GridLayout gridLayout = findViewById(R.id.gridLayout);
         gridLayout.removeAllViews();
+        gridLayout.setColumnCount(5);
 
         int[] iconosId = {
                 R.mipmap.iconogoku,
@@ -124,6 +126,14 @@ public class CambiarIconoVista extends AppCompatActivity {
             imageButton.setImageResource(iconosId[i]);
             imageButton.setPadding(10, 10, 10, 10);
             imageButton.setBackgroundColor(Color.TRANSPARENT);
+
+            GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+            params.width = GridLayout.LayoutParams.WRAP_CONTENT;
+            params.height = GridLayout.LayoutParams.WRAP_CONTENT;
+            params.setGravity(Gravity.CENTER); // Centrar el botón
+
+            imageButton.setLayoutParams(params);
+
 
             final int iconId = iconosId[i];
             imageButton.setOnClickListener(v -> {
