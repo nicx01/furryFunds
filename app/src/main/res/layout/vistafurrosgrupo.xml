@@ -128,4 +128,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.986" />
+
+    <ImageButton
+        android:id="@+id/imageButtonBorrarFurro"
+        android:layout_width="93dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/verdeclaro"
+        android:contentDescription="borrarfurro"
+        app:layout_constraintStart_toEndOf="@+id/buttonAñadirFurro"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewFurrosGrupo"
+        app:srcCompat="@mipmap/equis_foreground" />
 </androidx.constraintlayout.widget.ConstraintLayout>
