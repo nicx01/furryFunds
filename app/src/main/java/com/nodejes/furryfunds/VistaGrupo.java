@@ -8,10 +8,17 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class VistaGrupo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +48,48 @@ public class VistaGrupo extends AppCompatActivity {
         buttonAñadirFurro.setOnClickListener(this::FurrosView);
     }
 
-    public void EliminarGrupo(View v){
-        Log.e("eeeeeeeeeeeeeeeeeeeee", "Error al guardar el ID de la imagen: ");
+    public void EliminarGrupo(View v) {
+        Intent intent = getIntent();
+        String groupName = intent.getStringExtra("GROUP_NAME");
+        int groupId = intent.getIntExtra("GROUP_ID", -1);
+
+        if (groupId != -1 && groupName != null) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Confirmar eliminación")
+                    .setMessage("¿Estás seguro de que deseas eliminar el grupo \"" + groupName + "\"? Esta acción no se puede deshacer.")
+                    .setPositiveButton("Eliminar", (dialog, which) -> {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        if (user != null) {
+                            FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
+                            DatabaseReference groupRef = database.getReference("usuarios/" + user.getUid() + "/grupos");
+
+                            groupRef.orderByValue().equalTo(groupName).get().addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    for (DataSnapshot snapshot : task.getResult().getChildren()) {
+                                        snapshot.getRef().removeValue();
+                                    }
+                                    Log.d("Firebase", "Grupo eliminado correctamente: " + groupName);
+
+                                    Intent returnIntent = new Intent(this, VistaInicio.class);
+                                    returnIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(returnIntent);
+                                    finish();
+                                } else {
+                                    Log.e("Firebase", "Error al eliminar el grupo: " + task.getException().getMessage());
+                                }
+                            });
+                        } else {
+                            Log.e("Firebase", "No hay usuario autenticado.");
+                        }
+                    })
+                    .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
+                    .show();
+        } else {
+            Log.e("EliminarGrupo", "Datos del grupo inválidos.");
+        }
     }
+
+
 
     public void FurrosView(View v) {
         Intent intent = new Intent(this, VistaFurrosGrupo.class);
