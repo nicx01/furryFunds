@@ -5,10 +5,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,6 +27,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class VistaGrupo extends AppCompatActivity {
+
+    private LinearLayout gastoContainer; // Contenedor para los gastos
+    private final ActivityResultLauncher<Intent> addGastoLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    String gastoNombre = result.getData().getStringExtra("GASTO_NOMBRE");
+                    String creadorNombre = result.getData().getStringExtra("CREADOR_NOMBRE");
+                    String cantidad = result.getData().getStringExtra("CANTIDAD");
+
+                    if (gastoNombre != null && creadorNombre != null && cantidad != null) {
+                        addGastoButton(gastoNombre, creadorNombre, cantidad);
+                    }
+                }
+            });
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -30,6 +52,19 @@ public class VistaGrupo extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        gastoContainer = findViewById(R.id.vistaVistaRetos);
+        FloatingActionButton btnAñadirGasto = findViewById(R.id.buttonAñadirGastoVistaGrupo);
+
+        btnAñadirGasto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VistaGrupo.this, VistaCrearGasto.class);
+                addGastoLauncher.launch(intent);
+            }
+        });
+
+
 
         TextView nombreGrupo = findViewById(R.id.textViewRetosVistaRetos);
 
@@ -47,6 +82,23 @@ public class VistaGrupo extends AppCompatActivity {
         Button buttonAñadirFurro = findViewById(R.id.buttonAñadirFurroVistaGastos);
         buttonAñadirFurro.setOnClickListener(this::FurrosView);
     }
+
+
+
+
+    private void addGastoButton(String gastoNombre, String creadorNombre, String cantidad) {
+        Button gastoButton = new Button(this);
+        gastoButton.setText(gastoNombre + " - " + cantidad + "€");
+
+        gastoButton.setOnClickListener(v -> {
+            // Mostrar un popup para eliminar el gasto
+            Toast.makeText(VistaGrupo.this, "Eliminar gasto: " + gastoNombre, Toast.LENGTH_SHORT).show();
+            gastoContainer.removeView(gastoButton);
+        });
+
+        gastoContainer.addView(gastoButton); // Añadir el botón al contenedor
+    }
+
 
     public void EliminarGrupo(View v) {
         Intent intent = getIntent();
@@ -88,8 +140,6 @@ public class VistaGrupo extends AppCompatActivity {
             Log.e("EliminarGrupo", "Datos del grupo inválidos.");
         }
     }
-
-
 
     public void FurrosView(View v) {
         Intent intent = new Intent(this, VistaFurrosGrupo.class);
