@@ -73,7 +73,6 @@ public class CambiarIconoVista extends AppCompatActivity {
     }
 
     public void cambiarIconoPerfil(int imagenseleccionada) {
-        Log.w("ASDFAS", "ASDF");
         ImageView imagen = findViewById(R.id.imageView3);
         if (imagenseleccionada != 0) {
             imagen.setImageResource(imagenseleccionada);
