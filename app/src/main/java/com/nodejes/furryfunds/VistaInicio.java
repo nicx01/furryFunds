@@ -2,6 +2,7 @@ package com.nodejes.furryfunds;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -16,6 +17,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -34,6 +40,7 @@ public class VistaInicio extends ComponentActivity {
                         if (!groupNames.contains(groupName)) { // Validar nombres duplicados
                             addGroupButton(groupName, groupIdCounter++);
                             groupNames.add(groupName);
+                            saveGroupToFirebase(groupName); // Guardar el grupo en Firebase
                             Toast.makeText(this, "Grupo creado: " + groupName, Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(this, "El grupo ya existe", Toast.LENGTH_SHORT).show();
@@ -41,6 +48,30 @@ public class VistaInicio extends ComponentActivity {
                     }
                 }
             });
+
+    private void saveGroupToFirebase(String groupName) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
+            DatabaseReference myRef = database.getReference("usuarios/" + user.getUid() + "/grupos");
+
+            String groupId = myRef.push().getKey();
+            if (groupId != null) {
+                myRef.child(groupId).setValue(groupName)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Log.d("Firebase", "Grupo guardado correctamente: " + groupName);
+                            } else {
+                                Log.e("Firebase", "Error al guardar el grupo: " + task.getException().getMessage());
+                            }
+                        });
+            } else {
+                Log.e("Firebase", "Error al generar el ID del grupo.");
+            }
+        } else {
+            Log.e("Firebase", "No hay usuario autenticado.");
+        }
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +94,34 @@ public class VistaInicio extends ComponentActivity {
                 CrearGrupoNuevo(v);
             }
         });
+
+        cargarGrupos();
     }
+
+    private void cargarGrupos() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
+            DatabaseReference myRef = database.getReference("usuarios/" + user.getUid() + "/grupos");
+
+            myRef.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    for (DataSnapshot snapshot : task.getResult().getChildren()) {
+                        String groupName = snapshot.getValue(String.class);
+                        if (groupName != null) {
+                            groupNames.add(groupName);
+                            addGroupButton(groupName, groupIdCounter++);
+                        }
+                    }
+                } else {
+                    Log.e("Firebase", "Error al cargar los grupos: " + task.getException().getMessage());
+                }
+            });
+        } else {
+            Log.e("Firebase", "No hay usuario autenticado.");
+        }
+    }
+
 
     public void CrearGrupoNuevo(View view){
         Intent intent = new Intent(this, VistaCrearGrupo.class);
