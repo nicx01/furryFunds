@@ -94,30 +94,36 @@ public class PerfilVista extends AppCompatActivity {
                     .setTitle("Confirmar eliminación")
                     .setMessage("¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.")
                     .setPositiveButton("Eliminar", (dialog, which) -> {
-                        user.delete()
-                                .addOnCompleteListener(task -> {
-                                    if (task.isSuccessful()) {
-                                        Intent intent = new Intent(this, MainActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        Log.e("TAG", "Error al eliminar la cuenta: " + task.getException().getMessage());
-                                    }
-                                });
+                        FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
+                        DatabaseReference userRef = database.getReference("usuarios/" + user.getUid());
+
+                        userRef.removeValue().addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Log.d("Firebase", "Datos del usuario eliminados correctamente.");
+
+                                user.delete()
+                                        .addOnCompleteListener(deleteTask -> {
+                                            if (deleteTask.isSuccessful()) {
+                                                Intent intent = new Intent(this, MainActivity.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                startActivity(intent);
+                                                finish();
+                                            } else {
+                                                Log.e("Firebase", "Error al eliminar la cuenta: " + deleteTask.getException().getMessage());
+                                            }
+                                        });
+                            } else {
+                                Log.e("Firebase", "Error al eliminar los datos del usuario: " + task.getException().getMessage());
+                            }
+                        });
                     })
                     .setNegativeButton("Cancelar", (dialog, which) -> {
                         dialog.dismiss();
                     })
                     .show();
         } else {
-            Log.e("TAG", "No hay usuario autenticado.");
+            Log.e("Firebase", "No hay usuario autenticado.");
         }
     }
 
-
-
-    /*public void ModificarPerfil(View v){
-        Intent intent = new Intent(this, )
-    }*/
 }
