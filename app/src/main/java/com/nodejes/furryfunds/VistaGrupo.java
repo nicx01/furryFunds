@@ -13,8 +13,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import org.w3c.dom.Text;
-
 public class VistaGrupo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,17 +37,16 @@ public class VistaGrupo extends AppCompatActivity {
             nombreGrupo.setText("Grupo desconocido");
         }
 
-        Button botonRetosView = findViewById(R.id.buttonAñadirRetoVistaRetos2);
-        botonRetosView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                RetosView(view);
-            }
-        });
+        Button buttonAñadirFurro = findViewById(R.id.buttonAñadirFurroVistaGastos);
+        buttonAñadirFurro.setOnClickListener(this::FurrosView);
     }
 
-    public void GastosView(View v) {
-        Intent intent = new Intent(this, VistaGastos.class);
+    public void EliminarGrupo(View v){
+        Log.e("eeeeeeeeeeeeeeeeeeeee", "Error al guardar el ID de la imagen: ");
+    }
+
+    public void FurrosView(View v) {
+        Intent intent = new Intent(this, VistaFurrosGrupo.class);
         startActivity(intent);
     }
 

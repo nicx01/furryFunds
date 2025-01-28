@@ -37,7 +37,7 @@
         app:layout_constraintVertical_bias="0.535" />
 
     <EditText
-        android:id="@+id/plainTextTituloGrupo"
+        android:id="@+id/plainTextTiturupo"
         android:layout_width="124dp"
         android:layout_height="48dp"
         android:ems="10"

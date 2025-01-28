@@ -31,7 +31,7 @@
         app:srcCompat="@mipmap/furry_funds_logo" />
 
     <Button
-        android:id="@+id/buttonAñadirFurroVistaRetos"
+        android:id="@+id/buttonAñadirFurroVistaGastos"
         android:layout_width="160dp"
         android:layout_height="93dp"
         android:layout_marginStart="180dp"

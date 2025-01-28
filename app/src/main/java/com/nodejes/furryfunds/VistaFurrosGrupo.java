@@ -1,6 +1,8 @@
 package com.nodejes.furryfunds;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,6 +24,11 @@ public class VistaFurrosGrupo extends AppCompatActivity {
             return insets;
         });
         añadirFurros();
+    }
+
+    public void InicioViewGrupo(View v) {
+        Intent intent = new Intent(this, VistaInicio.class);
+        startActivity(intent);
     }
 
     public void añadirFurros() {
@@ -57,13 +64,13 @@ public class VistaFurrosGrupo extends AppCompatActivity {
         // Mostrar el diálogo
         dialog.show();
     }
-        private boolean isValidEmail(String email) {
-            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-        }
 
+    private boolean isValidEmail(String email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
 
-
+    public void PerfilViewGrupo(View v) {
+        Intent intent = new Intent(this, PerfilVista.class);
+        startActivity(intent);
+    }
 }
-
-
-

@@ -31,6 +31,10 @@
         <activity android:name=".VistaGastos"/>
         <activity android:name=".VistaRetos"/>
         <activity android:name=".VistaRetoIndividual"/>
+        <activity android:name=".VistaFurrosGrupo"/>
+        <activity android:name=".VistaCrearGrupo"/>
+        <activity android:name=".VistaBalance"/>
+        <activity android:name=".VistaEstadisticas"/>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -41,9 +45,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".VistaCrearGrupo"/>
-        <activity android:name=".VistaBalance"/>
-        <activity android:name=".VistaEstadisticas"/>
+
     </application>
 
 </manifest>
