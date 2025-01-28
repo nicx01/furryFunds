@@ -67,6 +67,12 @@ public class PerfilVista extends AppCompatActivity {
             Log.e("Firebase", "No hay usuario autenticado.");
         }
     }
+
+    public void CerrarSesion(View v){
+        Log.e("Tontoooooooo", "Error al guardar el ID de la imagen: ");
+
+    }
+
     public void CompartirView(View v) {
         Intent intent = new Intent(this, CompartirAnimal.class);
         startActivity(intent);
