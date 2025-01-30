@@ -20,14 +20,14 @@ public class VistaCrearGrupo extends ComponentActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.vista_crear_grupo);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.vistaCrearGrupo), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.vistaCrearReto), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
         edtGroupName = findViewById(R.id.plainTextTituloGrupo);
-        Button btnSaveGroup = findViewById(R.id.buttonCrearGrupo);
+        Button btnSaveGroup = findViewById(R.id.buttonCrearReto);
 
         // Configurar el botón de guardar grupo
         btnSaveGroup.setOnClickListener(new View.OnClickListener() {

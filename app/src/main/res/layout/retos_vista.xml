@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/vistaCrearGrupo"
+    android:id="@+id/vistaCrearReto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/verdemediobajo">
@@ -23,12 +23,12 @@
         app:layout_constraintVertical_bias="0.192" />
 
     <EditText
-        android:id="@+id/plaintextreto"
+        android:id="@+id/plaintextDescripcionReto"
         android:layout_width="124dp"
         android:layout_height="55dp"
         android:ems="10"
+        android:hint="Descripcion"
         android:inputType="text"
-        android:text="Reto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.458"
@@ -37,12 +37,12 @@
         app:layout_constraintVertical_bias="0.535" />
 
     <EditText
-        android:id="@+id/plainTextTiturupo"
+        android:id="@+id/plainTextTituloReto"
         android:layout_width="124dp"
         android:layout_height="48dp"
         android:ems="10"
+        android:hint="Nombre del reto"
         android:inputType="text"
-        android:text="Furro"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,11 +52,11 @@
         app:layout_constraintVertical_bias="0.45" />
 
     <TextView
-        android:id="@+id/textFurroNickReto"
+        android:id="@+id/textTituloReto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="FurroNick"
+        android:text="Titulo"
         android:textColorLink="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Reto"
+        android:text="Descripcion"
         android:textColorLink="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,24 +80,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.508" />
-
-    <ToggleButton
-        android:id="@+id/toggleButtonMarcaRetoHechoSinHacer"
-        android:layout_width="71dp"
-        android:layout_height="110dp"
-        android:backgroundTint="@color/verdesuperoscuro"
-        android:text="ToggleButton"
-        android:textColor="@color/verdemediobajo"
-        android:textOff="SIN HACER"
-        android:textOn="CONSEGUIDO"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.979"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -159,10 +141,12 @@
         app:layout_constraintVertical_bias="0.986" />
 
     <Button
-        android:id="@+id/buttonCrearGrupo"
+        android:id="@+id/buttonCrearReto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
         android:text="Crear"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
