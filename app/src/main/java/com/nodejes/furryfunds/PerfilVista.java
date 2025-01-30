@@ -49,8 +49,25 @@ public class PerfilVista extends AppCompatActivity {
         });
         cargarImagenPerfil();
         mostrarDiasDesdeCreacion();
+        contarGruposDelUsuario();
     }
+    private void contarGruposDelUsuario() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
+            DatabaseReference groupRef = database.getReference("usuarios/" + user.getUid() + "/grupos");
 
+            groupRef.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    long numeroGrupos = task.getResult().getChildrenCount();
+                    TextView gruposTextView = findViewById(R.id.nGruposEjemploTextView);
+                    gruposTextView.setText(""+numeroGrupos);
+                } else {
+                    Log.e("Firebase", "Error al obtener los grupos: " + task.getException().getMessage());
+                }
+            });
+        }
+    }
     private void mostrarDiasDesdeCreacion() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null && user.getMetadata() != null) {
