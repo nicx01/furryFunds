@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import android.content.DialogInterface;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AlertDialog;
 
 public class PerfilVista extends AppCompatActivity {
@@ -33,17 +36,29 @@ public class PerfilVista extends AppCompatActivity {
             return insets;
         });
         TextView email=findViewById(R.id.correoEjemploTextView);
+        TextView nickname = findViewById(R.id.nickEjemploTextView);
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         email.setText(user.getEmail());
+        cargarNombreUsuario(user.getUid(), nickname);
         Button eliminarCuenta=findViewById(R.id.eliminarCuentaButton);
         eliminarCuenta.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 DeleteAccount();
             }
-
         });
         cargarImagenPerfil();
+    }
+    private void cargarNombreUsuario(String userId, TextView nickname) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference userRef = database.getReference("usuarios").child(userId).child("username");
 
+        userRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful() && task.getResult().exists()) {
+                String username = task.getResult().getValue(String.class);
+                nickname.setText(username);
+            }
+        });
     }
     public void cargarImagenPerfil() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -92,9 +107,58 @@ public class PerfilVista extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void ModificarPerfil(View v){
-        Intent intent = new Intent(this, PerfilVista.class);
+    public void ModificarPerfil(View v) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user == null) {
+            Log.e("Firebase", "No hay usuario autenticado.");
+            return;
+        }
+
+        String userId = user.getUid();
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference userRef = database.getReference("usuarios").child(userId).child("username");
+
+        userRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful() && task.getResult().exists()) {
+                String currentUsername = task.getResult().getValue(String.class);
+                mostrarDialogoEditarUsername(userRef, currentUsername);
+            } else {
+                mostrarDialogoEditarUsername(userRef, "");
+            }
+        });
     }
+
+    private void mostrarDialogoEditarUsername(DatabaseReference userRef, String currentUsername) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Modificar nombre de usuario");
+
+        final EditText input = new EditText(this);
+        input.setText(currentUsername);
+        builder.setView(input);
+
+        builder.setPositiveButton("Guardar", (dialog, which) -> {
+            String nuevoUsername = input.getText().toString().trim();
+            if (!nuevoUsername.isEmpty()) {
+                userRef.setValue(nuevoUsername).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        TextView nickname = findViewById(R.id.nickEjemploTextView);
+                        nickname.setText(nuevoUsername);
+                        Toast.makeText(this, "Nombre actualizado", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.e("Firebase", "Error al actualizar el nombre de usuario", task.getException());
+                    }
+                });
+            } else {
+                Toast.makeText(this, "El nombre no puede estar vacío", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
+
+        builder.show();
+    }
+
 
     public void DeleteAccount() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
