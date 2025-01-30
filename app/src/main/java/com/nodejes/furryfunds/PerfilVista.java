@@ -48,7 +48,23 @@ public class PerfilVista extends AppCompatActivity {
             }
         });
         cargarImagenPerfil();
+        mostrarDiasDesdeCreacion();
     }
+
+    private void mostrarDiasDesdeCreacion() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null && user.getMetadata() != null) {
+            long creationTimestamp = user.getMetadata().getCreationTimestamp();
+            long currentTime = System.currentTimeMillis();
+
+            long diffInMillis = currentTime - creationTimestamp;
+            long diasDesdeCreacion = diffInMillis / (1000 * 60 * 60 * 24);
+
+            TextView edadAnimalTextView = findViewById(R.id.edadAnimalEjemploTextView);
+            edadAnimalTextView.setText(diasDesdeCreacion + " días");
+        }
+    }
+
     private void cargarNombreUsuario(String userId, TextView nickname) {
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
         DatabaseReference userRef = database.getReference("usuarios").child(userId).child("username");
