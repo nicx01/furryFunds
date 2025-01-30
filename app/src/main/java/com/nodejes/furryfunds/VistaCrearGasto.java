@@ -17,23 +17,35 @@ public class VistaCrearGasto extends ComponentActivity {
         setContentView(R.layout.vista_gastos);
 
         EditText etGastoNombre = findViewById(R.id.plaintexttitulo);
-        EditText etCreadorNombre = findViewById(R.id.plaintextfurronickgasto);
         EditText etCantidad = findViewById(R.id.plaintextcantidadgasto);
         Button btnCrearGasto = findViewById(R.id.buttonCrearGasto);
 
         btnCrearGasto.setOnClickListener(v -> {
             String gastoNombre = etGastoNombre.getText().toString().trim();
-            String creadorNombre = etCreadorNombre.getText().toString().trim();
-            String cantidad = etCantidad.getText().toString().trim();
+            String cantidadString = etCantidad.getText().toString().trim();
 
-            if (gastoNombre.isEmpty() || creadorNombre.isEmpty() || cantidad.isEmpty()) {
-                Toast.makeText(VistaCrearGasto.this, "Por favor, rellene todos los campos", Toast.LENGTH_SHORT).show();
+            if (gastoNombre.isEmpty()) {
+                etGastoNombre.setError("Falta el titulo");
+            }
+            if (cantidadString.isEmpty()) {
+                etCantidad.setError("Falta el gasto");
+            }
+
+            double cantidad;
+            try {
+                cantidad = Double.parseDouble(cantidadString);
+                if (cantidad <= 0) {
+                    etCantidad.setError("La cantidad debe ser mayor a 0");
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                etCantidad.setError("Ingrese un número válido");
                 return;
             }
 
+
             Intent resultIntent = new Intent();
             resultIntent.putExtra("GASTO_NOMBRE", gastoNombre);
-            resultIntent.putExtra("CREADOR_NOMBRE", creadorNombre);
             resultIntent.putExtra("CANTIDAD", cantidad);
             setResult(RESULT_OK, resultIntent);
             finish(); // Vuelve a la vista anterior

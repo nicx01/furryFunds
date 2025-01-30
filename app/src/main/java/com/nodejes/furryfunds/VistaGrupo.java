@@ -33,11 +33,11 @@ public class VistaGrupo extends AppCompatActivity {
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                     String gastoNombre = result.getData().getStringExtra("GASTO_NOMBRE");
-                    String creadorNombre = result.getData().getStringExtra("CREADOR_NOMBRE");
-                    String cantidad = result.getData().getStringExtra("CANTIDAD");
+                    double cantidad = result.getData().getDoubleExtra("CANTIDAD", 0.0);
 
-                    if (gastoNombre != null && creadorNombre != null && cantidad != null) {
-                        addGastoButton(gastoNombre, creadorNombre, cantidad);
+                    if (gastoNombre != null && cantidad>0) {
+                        String cantidadStr = String.valueOf(cantidad);
+                        addGastoButton(gastoNombre, cantidadStr);
                     }
                 }
             });
@@ -56,12 +56,9 @@ public class VistaGrupo extends AppCompatActivity {
         gastoContainer = findViewById(R.id.vistaVistaRetos);
         FloatingActionButton btnAñadirGasto = findViewById(R.id.buttonAñadirGastoVistaGrupo);
 
-        btnAñadirGasto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(VistaGrupo.this, VistaCrearGasto.class);
-                addGastoLauncher.launch(intent);
-            }
+        btnAñadirGasto.setOnClickListener(v -> {
+            Intent intent = new Intent(VistaGrupo.this, VistaCrearGasto.class);
+            addGastoLauncher.launch(intent);
         });
 
 
@@ -86,17 +83,26 @@ public class VistaGrupo extends AppCompatActivity {
 
 
 
-    private void addGastoButton(String gastoNombre, String creadorNombre, String cantidad) {
+    private void addGastoButton(String nombreGasto, String cantidadGasto) {
+        //String nombreCreador="hugo";
         Button gastoButton = new Button(this);
-        gastoButton.setText(gastoNombre + " - " + cantidad + "€");
+        gastoButton.setText(nombreGasto + " - " + cantidadGasto + "€");
 
         gastoButton.setOnClickListener(v -> {
-            // Mostrar un popup para eliminar el gasto
-            Toast.makeText(VistaGrupo.this, "Eliminar gasto: " + gastoNombre, Toast.LENGTH_SHORT).show();
-            gastoContainer.removeView(gastoButton);
+            new AlertDialog.Builder(this)
+                    .setTitle("Eliminar gasto")
+                    .setMessage("¿Estás seguro de que quieres eliminar este gasto?")
+                    .setPositiveButton("Sí", (dialog, which) -> {
+                        gastoContainer.removeView(gastoButton); // Eliminar el botón
+                        Toast.makeText(VistaGrupo.this, "Gasto eliminado", Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("No", (dialog, which) -> dialog.dismiss()) // Cerrar el diálogo sin eliminar
+                    .show();
         });
 
         gastoContainer.addView(gastoButton); // Añadir el botón al contenedor
+        Toast.makeText(this, "Gasto añadido: " + nombreGasto + " - " + cantidadGasto + "€", Toast.LENGTH_SHORT).show();
+
     }
 
 

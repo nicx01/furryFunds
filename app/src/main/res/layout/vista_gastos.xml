@@ -11,7 +11,9 @@
         android:id="@+id/buttonCrearGasto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
         android:text="Crear"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -35,20 +37,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.173" />
 
-    <EditText
-        android:id="@+id/plaintextfurronickgasto"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.913"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.502" />
-
     <TextView
         android:id="@+id/titulogasto"
         android:layout_width="wrap_content"
@@ -63,7 +51,7 @@
         app:layout_constraintHorizontal_bias="0.008"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.007" />
+        app:layout_constraintVertical_bias="0.052" />
 
     <TextView
         android:id="@+id/textCantidadgasto"
@@ -79,21 +67,7 @@
         app:layout_constraintHorizontal_bias="0.364"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.546" />
-
-    <TextView
-        android:id="@+id/textFurroNickGasto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FurroNick"
-        android:textColorLink="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.385"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.487" />
+        app:layout_constraintVertical_bias="0.511" />
 
     <ImageButton
         android:id="@+id/imagebuttonmodificargasto"
@@ -113,28 +87,28 @@
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:ems="10"
+        android:hint="Titulo"
         android:inputType="text"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.916"
+        app:layout_constraintHorizontal_bias="0.912"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.432" />
+        app:layout_constraintVertical_bias="0.46" />
 
     <EditText
         android:id="@+id/plaintextcantidadgasto"
         android:layout_width="160dp"
         android:layout_height="43dp"
         android:ems="10"
-        android:inputType="text"
-        android:text="Name"
+        android:hint="Cantidad"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.912"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.584" />
+        app:layout_constraintVertical_bias="0.549" />
 
     <Button
         android:id="@+id/PerfilButtonVistaGasto"
