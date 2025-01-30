@@ -6,16 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/imageButtonFurrosGrupo"
-        android:layout_width="140dp"
-        android:layout_height="112dp"
-        android:backgroundTint="#00FFFFFF"
-        android:contentDescription="BotonAtrasVistaRetos"
-        app:layout_constraintBottom_toTopOf="@+id/textViewFurrosGrupo"
-        app:layout_constraintEnd_toStartOf="@+id/textViewFurrosGrupo"
-        app:srcCompat="@mipmap/atras_foreground" />
-
     <ImageView
         android:id="@+id/perfilLogoImageView3FurrosGrupo"
         android:layout_width="142dp"
@@ -38,7 +28,8 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="180dp"
         android:backgroundTint="@color/verdemediobajo"
-        android:onClick="CrearReto"
+        android:contentDescription="anadirfurro"
+        android:onClick="addFurros"
         android:text="Añadir Furro"
         android:textColor="@color/verdeoscuro"
         android:textColorLink="@color/verdesuperclaro"
@@ -136,8 +127,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:backgroundTint="@color/verdeclaro"
-        android:contentDescription="borrarfurro"
+        android:contentDescription="borrarFurros"
+        android:onClick="borrarFurros"
         app:layout_constraintStart_toEndOf="@+id/buttonAñadirFurro"
         app:layout_constraintTop_toBottomOf="@+id/scrollViewFurrosGrupo"
-        app:srcCompat="@mipmap/equis_foreground" />
+        app:srcCompat="@mipmap/lupa_foreground" />
 </androidx.constraintlayout.widget.ConstraintLayout>
