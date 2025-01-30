@@ -20,20 +20,6 @@
         app:layout_constraintVertical_bias="0.796">
 
         <TextView
-            android:id="@+id/nombrePerfilEjemploTextView"
-            android:layout_width="168dp"
-            android:layout_height="19dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginBottom="16dp"
-            android:text="EjemploFurro"
-            app:layout_constraintBottom_toTopOf="@+id/correoEjemploTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.101"
-            app:layout_constraintStart_toEndOf="@+id/nombrePerfilTextView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.928" />
-
-        <TextView
             android:id="@+id/correoEjemploTextView"
             android:layout_width="170dp"
             android:layout_height="18dp"
@@ -84,19 +70,6 @@
             app:layout_constraintStart_toEndOf="@+id/edadAnimalTextView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.734" />
-
-        <TextView
-            android:id="@+id/nombrePerfilTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Nombre:"
-            app:layout_constraintBottom_toTopOf="@+id/correoTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.147"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/correoTextView"
