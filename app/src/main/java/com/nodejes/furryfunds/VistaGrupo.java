@@ -5,10 +5,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,6 +27,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class VistaGrupo extends AppCompatActivity {
+
+    private LinearLayout gastoContainer; // Contenedor para los gastos
+    private final ActivityResultLauncher<Intent> addGastoLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    String gastoNombre = result.getData().getStringExtra("GASTO_NOMBRE");
+                    double cantidad = result.getData().getDoubleExtra("CANTIDAD", 0.0);
+
+                    if (gastoNombre != null && cantidad>0) {
+                        String cantidadStr = String.valueOf(cantidad);
+                        addGastoButton(gastoNombre, cantidadStr);
+                    }
+                }
+            });
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -30,6 +52,16 @@ public class VistaGrupo extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        gastoContainer = findViewById(R.id.vistaVistaRetos);
+        FloatingActionButton btnAñadirGasto = findViewById(R.id.buttonAñadirGastoVistaGrupo);
+
+        btnAñadirGasto.setOnClickListener(v -> {
+            Intent intent = new Intent(VistaGrupo.this, VistaCrearGasto.class);
+            addGastoLauncher.launch(intent);
+        });
+
+
 
         TextView nombreGrupo = findViewById(R.id.textViewRetosVistaRetos);
 
@@ -47,6 +79,32 @@ public class VistaGrupo extends AppCompatActivity {
         Button buttonAñadirFurro = findViewById(R.id.buttonAñadirFurroVistaGastos);
         buttonAñadirFurro.setOnClickListener(this::FurrosView);
     }
+
+
+
+
+    private void addGastoButton(String nombreGasto, String cantidadGasto) {
+        //String nombreCreador="hugo";
+        Button gastoButton = new Button(this);
+        gastoButton.setText(nombreGasto + " - " + cantidadGasto + "€");
+
+        gastoButton.setOnClickListener(v -> {
+            new AlertDialog.Builder(this)
+                    .setTitle("Eliminar gasto")
+                    .setMessage("¿Estás seguro de que quieres eliminar este gasto?")
+                    .setPositiveButton("Sí", (dialog, which) -> {
+                        gastoContainer.removeView(gastoButton); // Eliminar el botón
+                        Toast.makeText(VistaGrupo.this, "Gasto eliminado", Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("No", (dialog, which) -> dialog.dismiss()) // Cerrar el diálogo sin eliminar
+                    .show();
+        });
+
+        gastoContainer.addView(gastoButton); // Añadir el botón al contenedor
+        Toast.makeText(this, "Gasto añadido: " + nombreGasto + " - " + cantidadGasto + "€", Toast.LENGTH_SHORT).show();
+
+    }
+
 
     public void EliminarGrupo(View v) {
         Intent intent = getIntent();
@@ -88,8 +146,6 @@ public class VistaGrupo extends AppCompatActivity {
             Log.e("EliminarGrupo", "Datos del grupo inválidos.");
         }
     }
-
-
 
     public void FurrosView(View v) {
         Intent intent = new Intent(this, VistaFurrosGrupo.class);

@@ -35,6 +35,7 @@
         <activity android:name=".VistaCrearGrupo"/>
         <activity android:name=".VistaBalance"/>
         <activity android:name=".VistaEstadisticas"/>
+        <activity android:name=".VistaCrearGasto"/>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
