@@ -24,6 +24,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class VistaInicio extends ComponentActivity {
 
@@ -38,9 +41,10 @@ public class VistaInicio extends ComponentActivity {
                     String groupName = result.getData().getStringExtra("GROUP_NAME");
                     if (groupName != null && !groupName.isEmpty()) {
                         if (!groupNames.contains(groupName)) { // Validar nombres duplicados
-                            addGroupButton(groupName, groupIdCounter++);
+                            String groupId = UUID.randomUUID().toString();
+                            addGroupButton(groupName, groupId);
                             groupNames.add(groupName);
-                            saveGroupToFirebase(groupName); // Guardar el grupo en Firebase
+                            saveGroupToFirebase(groupId, groupName);
                             Toast.makeText(this, "Grupo creado: " + groupName, Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(this, "El grupo ya existe", Toast.LENGTH_SHORT).show();
@@ -49,29 +53,28 @@ public class VistaInicio extends ComponentActivity {
                 }
             });
 
-    private void saveGroupToFirebase(String groupName) {
+    private void saveGroupToFirebase(String groupId, String groupName) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
             DatabaseReference myRef = database.getReference("usuarios/" + user.getUid() + "/grupos");
 
-            String groupId = myRef.push().getKey();
-            if (groupId != null) {
-                myRef.child(groupId).setValue(groupName)
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                Log.d("Firebase", "Grupo guardado correctamente: " + groupName);
-                            } else {
-                                Log.e("Firebase", "Error al guardar el grupo: " + task.getException().getMessage());
-                            }
-                        });
-            } else {
-                Log.e("Firebase", "Error al generar el ID del grupo.");
-            }
+            Map<String, Object> groupData = new HashMap<>();
+            groupData.put("nombre", groupName);
+
+            myRef.child(groupId).setValue(groupData)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Log.d("Firebase", "Grupo guardado correctamente: " + groupName);
+                        } else {
+                            Log.e("Firebase", "Error al guardar el grupo: " + task.getException().getMessage());
+                        }
+                    });
         } else {
             Log.e("Firebase", "No hay usuario autenticado.");
         }
     }
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,16 +108,18 @@ public class VistaInicio extends ComponentActivity {
             DatabaseReference myRef = database.getReference("usuarios/" + user.getUid() + "/grupos");
 
             myRef.get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
+                if (task.isSuccessful() && task.getResult().exists()) {
                     for (DataSnapshot snapshot : task.getResult().getChildren()) {
-                        String groupName = snapshot.getValue(String.class);
+                        String groupId = snapshot.getKey(); // Obtener el ID del grupo
+                        String groupName = snapshot.child("nombre").getValue(String.class); // Obtener el nombre del grupo
+
                         if (groupName != null) {
                             groupNames.add(groupName);
-                            addGroupButton(groupName, groupIdCounter++);
+                            addGroupButton(groupName, groupId);
                         }
                     }
                 } else {
-                    Log.e("Firebase", "Error al cargar los grupos: " + task.getException().getMessage());
+                    Log.e("Firebase", "Error al cargar los grupos: " + (task.getException() != null ? task.getException().getMessage() : "No hay grupos disponibles."));
                 }
             });
         } else {
@@ -123,12 +128,13 @@ public class VistaInicio extends ComponentActivity {
     }
 
 
+
     public void CrearGrupoNuevo(View view){
         Intent intent = new Intent(this, VistaCrearGrupo.class);
         createGroupLauncher.launch(intent);
     }
 
-    private void addGroupButton(String groupName, int groupId) {
+    private void addGroupButton(String groupName, String groupId) {
         // Crear un nuevo botón
         Button button = new Button(this);
         button.setText(groupName);
@@ -139,7 +145,7 @@ public class VistaInicio extends ComponentActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openGroupDetails(groupId);
+                openGroupDetails(groupId, groupName);
             }
         });
 
@@ -147,10 +153,7 @@ public class VistaInicio extends ComponentActivity {
         groupContainer.addView(button);
     }
 
-    private void openGroupDetails(int groupId) {
-        // Abre la actividad con los detalles del grupo correspondiente
-        String groupName = groupNames.get(groupId - 1);
-
+    private void openGroupDetails(String groupId, String groupName) {
         Intent intent = new Intent(VistaInicio.this, VistaGrupo.class);
         intent.putExtra("GROUP_ID", groupId); // Pasar el ID del grupo
         intent.putExtra("GROUP_NAME", groupName); // Pasar el nombre del grupo
