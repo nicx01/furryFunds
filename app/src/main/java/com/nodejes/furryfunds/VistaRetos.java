@@ -1,6 +1,8 @@
 package com.nodejes.furryfunds;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -59,7 +61,10 @@ public class VistaRetos extends AppCompatActivity{
         retoButton.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
 
         CheckBox checkBox = new CheckBox(this);
-        checkBox.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        checkBox.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        checkBox.setButtonTintList(ColorStateList.valueOf(Color.BLACK)); // Color del check
 
         retoButton.setOnClickListener(v -> {
             new android.app.AlertDialog.Builder(this)
