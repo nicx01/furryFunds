@@ -151,25 +151,21 @@ public class VistaGrupo extends AppCompatActivity {
 
     public void EliminarGrupo(View v) {
         Intent intent = getIntent();
-        String groupName = intent.getStringExtra("GROUP_NAME");
-        String groupId = intent.getStringExtra("GROUP_ID");
+        String groupId = intent.getStringExtra("GROUP_ID"); // Obtener el ID del grupo
 
-        if (groupId != null && groupName != null) {
+        if (groupId != null) {
             new AlertDialog.Builder(this)
                     .setTitle("Confirmar eliminación")
-                    .setMessage("¿Estás seguro de que deseas eliminar el grupo \"" + groupName + "\"? Esta acción no se puede deshacer.")
+                    .setMessage("¿Estás seguro de que deseas eliminar este grupo? Esta acción no se puede deshacer.")
                     .setPositiveButton("Eliminar", (dialog, which) -> {
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         if (user != null) {
                             FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
-                            DatabaseReference groupRef = database.getReference("usuarios/" + user.getUid() + "/grupos");
+                            DatabaseReference groupRef = database.getReference("usuarios/" + user.getUid() + "/grupos/" + groupId); // Eliminar el grupo usando el ID
 
-                            groupRef.orderByValue().equalTo(groupName).get().addOnCompleteListener(task -> {
+                            groupRef.removeValue().addOnCompleteListener(task -> {
                                 if (task.isSuccessful()) {
-                                    for (DataSnapshot snapshot : task.getResult().getChildren()) {
-                                        snapshot.getRef().removeValue();
-                                    }
-                                    Log.d("Firebase", "Grupo eliminado correctamente: " + groupName);
+                                    Log.d("Firebase", "Grupo eliminado correctamente con ID: " + groupId);
 
                                     Intent returnIntent = new Intent(this, VistaInicio.class);
                                     returnIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -186,7 +182,7 @@ public class VistaGrupo extends AppCompatActivity {
                     .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
                     .show();
         } else {
-            Log.e("EliminarGrupo", "Datos del grupo inválidos.");
+            Log.e("EliminarGrupo", "El ID del grupo es inválido.");
         }
     }
 
