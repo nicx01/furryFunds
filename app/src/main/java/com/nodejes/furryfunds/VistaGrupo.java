@@ -187,11 +187,7 @@ public class VistaGrupo extends AppCompatActivity {
     }
 
     public void FurrosView(View v) {
-        Intent intent2 = getIntent();
-        String groupId = intent2.getStringExtra("GROUP_ID");
-
         Intent intent = new Intent(this, VistaFurrosGrupo.class);
-        intent.putExtra("GROUP_ID", groupId);
         startActivity(intent);
     }
 

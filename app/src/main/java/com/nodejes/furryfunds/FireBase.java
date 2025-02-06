@@ -63,14 +63,6 @@ public class FireBase extends AppCompatActivity {
                                                 Log.e("TAG", "Error al guardar el correo como nombre de usuario", usernameTask.getException());
                                             }
                                         });
-                                userRef.child("email").setValue(user.getEmail())
-                                        .addOnCompleteListener(usernameTask -> {
-                                            if (usernameTask.isSuccessful()) {
-                                                Log.d("TAG", "Correo guardado: " + user.getEmail());
-                                            } else {
-                                                Log.e("TAG", "Error al guardar el correo", usernameTask.getException());
-                                            }
-                                        });
 
                                 Log.d("TAG", "Usuario registrado: " + user.getEmail());
                                 callback.onCheckComplete(true);
