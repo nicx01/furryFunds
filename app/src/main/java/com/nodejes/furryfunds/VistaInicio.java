@@ -57,10 +57,11 @@ public class VistaInicio extends ComponentActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
-            DatabaseReference myRef = database.getReference("usuarios/" + user.getUid() + "/grupos");
+            DatabaseReference myRef = database.getReference("grupos");
 
             Map<String, Object> groupData = new HashMap<>();
             groupData.put("nombre", groupName);
+            groupData.put("owner", user.getEmail());
 
             myRef.child(groupId).setValue(groupData)
                     .addOnCompleteListener(task -> {
@@ -105,17 +106,35 @@ public class VistaInicio extends ComponentActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
-            DatabaseReference myRef = database.getReference("usuarios/" + user.getUid() + "/grupos");
+            DatabaseReference gruposRef = database.getReference("grupos");
 
-            myRef.get().addOnCompleteListener(task -> {
+            gruposRef.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful() && task.getResult().exists()) {
-                    for (DataSnapshot snapshot : task.getResult().getChildren()) {
-                        String groupId = snapshot.getKey(); // Obtener el ID del grupo
-                        String groupName = snapshot.child("nombre").getValue(String.class); // Obtener el nombre del grupo
+                    for (DataSnapshot groupSnapshot : task.getResult().getChildren()) {
+                        String groupId = groupSnapshot.getKey(); // Obtener el ID del grupo
+                        String groupName = groupSnapshot.child("nombre").getValue(String.class); // Obtener el nombre del grupo
+                        String groupOwner = groupSnapshot.child("owner").getValue(String.class); // Obtener el propietario del grupo
 
-                        if (groupName != null) {
-                            groupNames.add(groupName);
-                            addGroupButton(groupName, groupId);
+                        if (groupName != null && groupId != null) {
+                            DatabaseReference membersRef = database.getReference("grupos/" + groupId + "/miembros");
+                            membersRef.get().addOnCompleteListener(membersTask -> {
+                                boolean isMemberOrOwner = false;
+
+                                if (membersTask.isSuccessful()) {
+                                    for (DataSnapshot memberSnapshot : membersTask.getResult().getChildren()) {
+                                        String memberEmail = memberSnapshot.child("email").getValue(String.class);
+                                        if (memberEmail != null && memberEmail.equals(user.getEmail())) {
+                                            isMemberOrOwner = true;
+                                            break;
+                                        }
+                                    }
+                                }
+
+                                if (isMemberOrOwner || (groupOwner != null && groupOwner.equals(user.getEmail()))) {
+                                    groupNames.add(groupName);
+                                    addGroupButton(groupName, groupId);
+                                }
+                            });
                         }
                     }
                 } else {
@@ -126,6 +145,7 @@ public class VistaInicio extends ComponentActivity {
             Log.e("Firebase", "No hay usuario autenticado.");
         }
     }
+
 
 
 

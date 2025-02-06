@@ -14,6 +14,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.List;
+
 public class FireBase extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
@@ -63,6 +65,14 @@ public class FireBase extends AppCompatActivity {
                                                 Log.e("TAG", "Error al guardar el correo como nombre de usuario", usernameTask.getException());
                                             }
                                         });
+                                userRef.child("email").setValue(user.getEmail())
+                                        .addOnCompleteListener(usernameTask -> {
+                                            if (usernameTask.isSuccessful()) {
+                                                Log.d("TAG", "Correo guardado: " + user.getEmail());
+                                            } else {
+                                                Log.e("TAG", "Error al guardar el correo", usernameTask.getException());
+                                            }
+                                        });
 
                                 Log.d("TAG", "Usuario registrado: " + user.getEmail());
                                 callback.onCheckComplete(true);
@@ -93,4 +103,38 @@ public class FireBase extends AppCompatActivity {
                     }
                 });
     }
+
+    public interface UidCallback {
+        void onCallback(String uid);
+    }
+
+    public void obtenerUidDeCorreo(String email, UidCallback callback) {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        auth.fetchSignInMethodsForEmail(email)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        List<String> signInMethods = task.getResult().getSignInMethods();
+
+                        // Verificar si el correo está asociado con algún método de inicio de sesión
+                        if (signInMethods != null && !signInMethods.isEmpty()) {
+                            // Si el correo está registrado, obtenemos el UID
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            if (user != null) {
+                                String uid = user.getUid();  // Obtener el UID del usuario autenticado
+                                callback.onCallback(uid);  // Pasamos el UID al callback
+                                Log.d("Firebase", "UID del usuario con correo " + email + ": " + uid);
+                            }
+                        } else {
+                            Log.e("Firebase", "El correo no está asociado a ninguna cuenta.");
+                            callback.onCallback(null);  // En caso de que no se haya encontrado el usuario
+                        }
+                    } else {
+                        Log.e("Firebase", "Error al verificar el correo: " + task.getException().getMessage());
+                        callback.onCallback(null);  // En caso de error
+                    }
+                });
+    }
+
+
 }
