@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cambiarIconoVista"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/verdemediobajo">
+    android:layout_height="match_parent">
+
     <Button
         android:id="@+id/PerfilButtonVistaIcono"
         android:layout_width="wrap_content"
