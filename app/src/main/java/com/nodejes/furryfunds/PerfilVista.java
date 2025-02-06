@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -54,20 +55,31 @@ public class PerfilVista extends AppCompatActivity {
     private void contarGruposDelUsuario() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
+            String userEmail = user.getEmail();  // Obtener el correo del usuario autenticado
             FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
-            DatabaseReference groupRef = database.getReference("usuarios/" + user.getUid() + "/grupos");
+            DatabaseReference groupsRef = database.getReference("grupos");
 
-            groupRef.get().addOnCompleteListener(task -> {
+            groupsRef.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    long numeroGrupos = task.getResult().getChildrenCount();
+                    long numeroGrupos = 0;
+                    for (DataSnapshot groupSnapshot : task.getResult().getChildren()) {
+                        // Obtener el valor de "owner" del grupo actual
+                        String groupOwner = groupSnapshot.child("owner").getValue(String.class);
+
+                        if (userEmail != null && userEmail.equals(groupOwner)) {
+                            numeroGrupos++;  // Incrementar el contador de grupos del usuario
+                        }
+                    }
+
                     TextView gruposTextView = findViewById(R.id.nGruposEjemploTextView);
-                    gruposTextView.setText(""+numeroGrupos);
+                    gruposTextView.setText(String.valueOf(numeroGrupos));
                 } else {
                     Log.e("Firebase", "Error al obtener los grupos: " + task.getException().getMessage());
                 }
             });
         }
     }
+
     private void mostrarDiasDesdeCreacion() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null && user.getMetadata() != null) {
