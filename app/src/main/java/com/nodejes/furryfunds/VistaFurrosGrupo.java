@@ -3,6 +3,7 @@ package com.nodejes.furryfunds;
 import android.graphics.Color;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +19,17 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class VistaFurrosGrupo extends AppCompatActivity {
     private ArrayList<String> emailList;
@@ -38,7 +49,7 @@ public class VistaFurrosGrupo extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        cargarFurros();
+        loadGroupMembers();
     }
     public void cargarFurros() {
         // Obtener el ScrollView del diseño
@@ -76,35 +87,81 @@ public class VistaFurrosGrupo extends AppCompatActivity {
 
 
     public void addFurros(View v) {
-        // Crear un campo de texto para ingresar el correo
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (currentUser == null) {
+            mostrarPopUp("No hay usuario autenticado.", true);
+            return;
+        }
+
+        String currentUserEmail = currentUser.getEmail(); // Obtener el correo del usuario autenticado
 
         EditText emailInput = new EditText(this);
         emailInput.setHint("Ingresa el correo"); // Texto guía para el usuario
 
-        // Crear el diálogo
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Agregar correo")
                 .setMessage("Introduce el correo para agregarlo al grupo:")
                 .setView(emailInput) // Agregar el campo de texto
                 .setPositiveButton("Agregar", (dialogInterface, i) -> {
-                    // Obtener el texto ingresado por el usuario
-                    String email = emailInput.getText().toString();
+                    String email = emailInput.getText().toString().trim();
 
-                    // Validar el correo
-                    if (isValidEmail(email) || email.equals("prueba")) {
-                        emailList.add(email);
-                        mostrarPopUp("Correo agregado: " + email, false); // Mensaje de éxito
-                        cargarFurros();
-                    } else {
-                        mostrarPopUp("Correo inválido. Por favor, inténtalo de nuevo.", true); // Mensaje de error
+                    if (email.isEmpty()) {
+                        mostrarPopUp("El correo no puede estar vacío.", true);
+                        return;
                     }
+
+                    if (email.equals(currentUserEmail)) {
+                        mostrarPopUp("No puedes agregarte a ti mismo.", true);
+                        return;
+                    }
+
+                    verificarEmailEnBaseDeDatos(email, new FirebaseCallback() {
+                        @Override
+                        public void onCheckComplete(boolean exists) {
+                            if (exists) {
+                                addGroupMember(email);
+                                emailList.add(email);
+                                mostrarPopUp("Correo agregado: " + email, false);
+                                cargarFurros();
+                            } else {
+                                mostrarPopUp("El correo no está registrado en la aplicación.", true);
+                            }
+                        }
+                    });
                 })
                 .setNegativeButton("Cancelar", (dialogInterface, i) -> dialogInterface.dismiss())
                 .create();
 
         dialog.show();
-
     }
+
+    private void verificarEmailEnBaseDeDatos(String email, FirebaseCallback callback) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference usersRef = database.getReference("usuarios");
+
+        usersRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful() && task.getResult() != null) {
+                boolean exists = false;
+                for (DataSnapshot userSnapshot : task.getResult().getChildren()) {
+                    String storedEmail = userSnapshot.child("email").getValue(String.class); // Ahora busca en la base de datos
+                    if (email.equalsIgnoreCase(storedEmail)) {
+                        exists = true;
+                        break;
+                    }
+                }
+                callback.onCheckComplete(exists);
+            } else {
+                Log.e("Firebase", "Error al verificar el correo en la base de datos", task.getException());
+                callback.onCheckComplete(false);
+            }
+        });
+    }
+
+    interface FirebaseCallback {
+        void onCheckComplete(boolean exists);
+    }
+
 
     public void borrarFurros(View v) {
         EditText emailInput = new EditText(this);
@@ -130,7 +187,6 @@ public class VistaFurrosGrupo extends AppCompatActivity {
 
         // Mostrar el diálogo
         dialog.show();
-
     }
 
     private void mostrarConfirmacionEliminacion(String email) {
@@ -139,11 +195,11 @@ public class VistaFurrosGrupo extends AppCompatActivity {
                 .setTitle("Confirmar eliminación")
                 .setMessage("¿Estás seguro de que deseas eliminar el correo: " + email + "?")
                 .setPositiveButton("Sí, eliminar", (dialogInterface, i) -> {
-                    // Eliminar espacios en blanco y buscar el correo en la lista
                     boolean removed = emailList.remove(email.trim());
 
                     if (removed) {
                         mostrarPopUp("Correo eliminado: " + email, false);
+                        eliminarMiembro(email);
                         cargarFurros(); // Actualizar la vista después de eliminar
                     } else {
                         mostrarPopUp("Error: El correo no se encontró en la lista.", true);
@@ -153,8 +209,67 @@ public class VistaFurrosGrupo extends AppCompatActivity {
                 .create()
                 .show();
     }
+    private void eliminarMiembro(String email) {
+        Intent intent = getIntent();
+        String groupId = intent.getStringExtra("GROUP_ID");
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return; // Verificar que el usuario esté autenticado
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference membersRef = database.getReference("usuarios/" + user.getUid() + "/grupos/" + groupId + "/miembro");
+
+        membersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String storedEmail = snapshot.child("email").getValue(String.class);
+                    if (storedEmail != null && storedEmail.equals(email)) {
+                        snapshot.getRef().removeValue()
+                                .addOnCompleteListener(task -> {
+                                    if (task.isSuccessful()) {
+                                        emailList.remove(email); // Eliminar de la lista local
+                                        mostrarPopUp("Correo eliminado con éxito.", false);
+                                    } else {
+                                        mostrarPopUp("Error al eliminar el correo.", true);
+                                    }
+                                });
+                        break; // Salir después de encontrar y eliminar el correo
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("Firebase", "Error al eliminar miembro: " + databaseError.getMessage());
+            }
+        });
+    }
+    private void addGroupMember(String email) {
+        Intent intent = getIntent();
+        String groupId = intent.getStringExtra("GROUP_ID");
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userEmail = user.getEmail();
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference gastosRef = database.getReference("usuarios/" + user.getUid() + "/grupos/" + groupId + "/miembro");
+
+        String gastoId = gastosRef.push().getKey(); // Generar un ID único para el gasto
+        if (gastoId != null) {
+            Map<String, Object> miembroData = new HashMap<>();
+            miembroData.put("email", email);
+
+            gastosRef.child(gastoId).setValue(miembroData)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Log.d("Firebase", "Gasto guardado correctamente por " + userEmail);
+                        } else {
+                            Log.e("Firebase", "Error al guardar gasto: " + task.getException().getMessage());
+                        }
+                    });
+
+        }
+    }
     private boolean isValidEmail(String email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
@@ -190,4 +305,35 @@ public class VistaFurrosGrupo extends AppCompatActivity {
         Intent intent = new Intent(this, VistaInicio.class);
         startActivity(intent);
     }
+    private void loadGroupMembers() {
+        Intent intent = getIntent();
+        String groupId = intent.getStringExtra("GROUP_ID");
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return; // Salir si el usuario no está autenticado
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference membersRef = database.getReference("usuarios/" + user.getUid() + "/grupos/" + groupId + "/miembro");
+
+        membersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                emailList.clear(); // Limpiar la lista antes de agregar nuevos datos
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String email = snapshot.child("email").getValue(String.class);
+                    if (email != null) {
+                        emailList.add(email);
+                    }
+                }
+                cargarFurros();
+                Log.d("Firebase", "Miembros cargados: " + emailList);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("Firebase", "Error al cargar miembros: " + databaseError.getMessage());
+            }
+        });
+    }
+
 }
