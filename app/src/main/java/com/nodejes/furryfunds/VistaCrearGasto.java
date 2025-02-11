@@ -51,4 +51,13 @@ public class VistaCrearGasto extends ComponentActivity {
             finish(); // Vuelve a la vista anterior
         });
     }
+    public void InicioViewCrearGrupo(View v) {
+        Intent intent = new Intent(this, VistaInicio.class);
+        startActivity(intent);
+    }
+
+    public void PerfilViewCrearGrupo(View v) {
+        Intent intent = new Intent(this, PerfilVista.class);
+        startActivity(intent);
+    }
 }
