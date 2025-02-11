@@ -7,6 +7,24 @@
     android:layout_height="match_parent">
 
 
+    <TextView
+        android:id="@+id/textViewBalanceVistaBalance"
+        android:layout_width="91dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="52dp"
+        android:background="@color/verdemediobajo"
+        android:text="BALANCE"
+        android:textAlignment="center"
+        android:textColor="@color/verdeoscuro"
+        android:textColorLink="@color/verdemediobajo"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.187" />
+
     <ImageView
         android:id="@+id/perfilLogoImageView4"
         android:layout_width="167dp"
@@ -70,16 +88,17 @@
     <ScrollView
         android:id="@+id/scrollViewBALANCE"
         android:layout_width="368dp"
-        android:layout_height="553dp"
+        android:layout_height="485dp"
         android:contentDescription="BANACESCROLL"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.589">
+        app:layout_constraintVertical_bias="0.686">
 
         <LinearLayout
+            android:id="@+id/movimientosContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />

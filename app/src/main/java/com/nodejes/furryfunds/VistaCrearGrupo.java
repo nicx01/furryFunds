@@ -52,14 +52,4 @@ public class VistaCrearGrupo extends ComponentActivity {
             edtGroupName.setError("El nombre del grupo no puede estar vacío");
         }
     }
-
-    public void InicioViewCrearGrupo(View v) {
-        Intent intent = new Intent(this, VistaInicio.class);
-        startActivity(intent);
-    }
-
-    public void PerfilViewCrearGrupo(View v) {
-        Intent intent = new Intent(this, PerfilVista.class);
-        startActivity(intent);
-    }
 }
