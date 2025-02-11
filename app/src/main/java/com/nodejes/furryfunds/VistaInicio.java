@@ -1,6 +1,7 @@
 package com.nodejes.furryfunds;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -155,13 +156,14 @@ public class VistaInicio extends ComponentActivity {
     }
 
     private void addGroupButton(String groupName, String groupId) {
-        // Crear un nuevo botón
         Button button = new Button(this);
         button.setText(groupName);
-        button.setAllCaps(false); // Desactivar texto en mayúsculas (opcional)
-        button.setTag(groupId); // Guardar el ID del grupo como tag
+        button.setAllCaps(false);
+        button.setTag(groupId);
 
-        // Configurar el evento de clic
+        button.setBackgroundColor(Color.parseColor("#BDEEE5"));
+        button.setTextColor(Color.parseColor("#09332B"));
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,7 +171,6 @@ public class VistaInicio extends ComponentActivity {
             }
         });
 
-        // Añadir el botón al contenedor de grupos
         groupContainer.addView(button);
     }
 

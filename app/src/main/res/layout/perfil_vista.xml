@@ -40,23 +40,22 @@
             android:text="N"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.01"
             app:layout_constraintStart_toEndOf="@+id/nGruposTextView"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.501" />
+            app:layout_constraintVertical_bias="0.306" />
 
         <TextView
-            android:id="@+id/nRetosEjemploTextView"
-            android:layout_width="92dp"
-            android:layout_height="19dp"
-            android:layout_marginStart="5dp"
-            android:text="N"
+            android:id="@+id/nGruposTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numero de grupos creados:"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/nRetosTextView"
+            app:layout_constraintHorizontal_bias="0.156"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.616" />
+            app:layout_constraintVertical_bias="0.306" />
 
         <TextView
             android:id="@+id/edadAnimalEjemploTextView"
@@ -69,7 +68,19 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/edadAnimalTextView"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.734" />
+            app:layout_constraintVertical_bias="0.436" />
+
+        <TextView
+            android:id="@+id/edadAnimalTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edad de tu Animal:"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.148"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.436" />
 
         <TextView
             android:id="@+id/correoTextView"
@@ -82,44 +93,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.182" />
-
-        <TextView
-            android:id="@+id/nGruposTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Numero Grupos:"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.178"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.501" />
-
-        <TextView
-            android:id="@+id/nRetosTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Numeros Retos Completados:"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.289"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nGruposTextView"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/edadAnimalTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Edad de tu Animal:"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.191"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nRetosTextView"
-            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -233,7 +206,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:onClick="ModificarPerfil"
-        android:text="Modificar"
+        android:text="Modificar nick"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

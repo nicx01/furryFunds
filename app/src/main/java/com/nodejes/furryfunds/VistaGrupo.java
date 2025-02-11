@@ -1,6 +1,7 @@
 package com.nodejes.furryfunds;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -124,7 +125,8 @@ public class VistaGrupo extends AppCompatActivity {
                             // Crear botón de gasto
                             Button gastoButton = new Button(this);
                             gastoButton.setText(nombreGasto + " - " + cantidadGasto + "€");
-
+                            gastoButton.setBackgroundColor(Color.parseColor("#BDEEE5")); // Fondo verde claro
+                            gastoButton.setTextColor(Color.parseColor("#09332B")); // Letras color oscuro
                             gastoButton.setOnClickListener(v -> {
                                 new AlertDialog.Builder(this)
                                         .setTitle("Eliminar gasto")
@@ -269,7 +271,8 @@ public class VistaGrupo extends AppCompatActivity {
                                         if (gastoNombre != null && cantidadGasto != null) {
                                             Button gastoButton = new Button(this);
                                             gastoButton.setText(gastoNombre + " - " + cantidadGasto + "€");
-
+                                            gastoButton.setBackgroundColor(Color.parseColor("#BDEEE5")); // Fondo verde claro
+                                            gastoButton.setTextColor(Color.parseColor("#09332B")); // Letras color oscuro
                                             gastoButton.setOnClickListener(v -> {
                                                 new AlertDialog.Builder(this)
                                                         .setTitle("Eliminar gasto")
