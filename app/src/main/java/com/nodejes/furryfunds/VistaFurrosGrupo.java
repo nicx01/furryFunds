@@ -70,6 +70,8 @@ public class VistaFurrosGrupo extends AppCompatActivity {
                 Button button = new Button(this);
                 button.setText(item);
                 button.setTextSize(16);
+                button.setBackgroundColor(Color.parseColor("#BDEEE5")); // Fondo verde claro
+                button.setTextColor(Color.parseColor("#09332B")); // Letras color oscuro
                 button.setPadding(8, 8, 8, 8);
 
                 // Establecer un listener para eliminar el correo cuando se presione el botón
