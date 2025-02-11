@@ -27,7 +27,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class VistaGrupo extends AppCompatActivity {
@@ -70,7 +72,7 @@ public class VistaGrupo extends AppCompatActivity {
 
         Intent intent = getIntent();
         String groupName = intent.getStringExtra("GROUP_NAME");
-        int groupId = intent.getIntExtra("GROUP_ID", -1); // -1 es un valor por defecto
+        String groupId = intent.getStringExtra("GROUP_ID");
 
         // Mostrar el nombre del grupo en el TextView
         if (groupName != null) {
@@ -229,8 +231,13 @@ public class VistaGrupo extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void RetosView(View v) {
-        Intent intent = new Intent(this, VistaRetos.class);
+    public void BalanceView(View v) {
+        Intent intent = new Intent(this, VistaBalance.class);
+        Intent intent2 = getIntent();
+        String groupId = intent2.getStringExtra("GROUP_ID");
+        String groupName = intent2.getStringExtra("GROUP_NAME");
+        intent.putExtra("GROUP_ID", groupId);
+        intent.putExtra("GROUP_NAME", groupName);
         startActivity(intent);
     }
 
