@@ -105,54 +105,54 @@ public class VistaGrupo extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     String groupOwner = task.getResult().getValue(String.class);
 
-                        // Si eres el propietario, permitir agregar el gasto
-                        DatabaseReference gastosRef = database.getReference("grupos/" + groupId + "/gastos");
+                    // Si eres el propietario, permitir agregar el gasto
+                    DatabaseReference gastosRef = database.getReference("grupos/" + groupId + "/gastos");
 
-                        String gastoId = gastosRef.push().getKey(); // Generar un ID único para el gasto
-                        if (gastoId != null) {
-                            Map<String, Object> gastoData = new HashMap<>();
-                            gastoData.put("nombre", nombreGasto);
-                            gastoData.put("cantidad", cantidadGasto);
-                            gastoData.put("usuario", userEmail);
+                    String gastoId = gastosRef.push().getKey(); // Generar un ID único para el gasto
+                    if (gastoId != null) {
+                        Map<String, Object> gastoData = new HashMap<>();
+                        gastoData.put("nombre", nombreGasto);
+                        gastoData.put("cantidad", cantidadGasto);
+                        gastoData.put("usuario", userEmail);
 
-                            gastosRef.child(gastoId).setValue(gastoData)
-                                    .addOnCompleteListener(task2 -> {
-                                        if (task2.isSuccessful()) {
-                                            Log.d("Firebase", "Gasto guardado correctamente por " + userEmail);
-                                        } else {
-                                            Log.e("Firebase", "Error al guardar gasto: " + task2.getException().getMessage());
-                                        }
-                                    });
+                        gastosRef.child(gastoId).setValue(gastoData)
+                                .addOnCompleteListener(task2 -> {
+                                    if (task2.isSuccessful()) {
+                                        Log.d("Firebase", "Gasto guardado correctamente por " + userEmail);
+                                    } else {
+                                        Log.e("Firebase", "Error al guardar gasto: " + task2.getException().getMessage());
+                                    }
+                                });
 
-                            // Crear botón de gasto
-                            Button gastoButton = new Button(this);
-                            gastoButton.setText(nombreGasto + " - " + cantidadGasto + "€");
-                            gastoButton.setBackgroundColor(Color.parseColor("#BDEEE5")); // Fondo verde claro
-                            gastoButton.setTextColor(Color.parseColor("#09332B")); // Letras color oscuro
-                            gastoButton.setOnClickListener(v -> {
-                                new AlertDialog.Builder(this)
-                                        .setTitle("Eliminar gasto")
-                                        .setMessage("¿Estás seguro de que quieres eliminar este gasto?")
-                                        .setPositiveButton("Sí", (dialog, which) -> {
-                                            // Eliminar de Firebase
-                                            gastosRef.child(gastoId).removeValue()
-                                                    .addOnCompleteListener(deleteTask -> {
-                                                        if (deleteTask.isSuccessful()) {
-                                                            Log.d("Firebase", "Gasto eliminado correctamente");
-                                                        } else {
-                                                            Log.e("Firebase", "Error al eliminar gasto: " + deleteTask.getException().getMessage());
-                                                        }
-                                                    });
+                        // Crear botón de gasto
+                        Button gastoButton = new Button(this);
+                        gastoButton.setText(nombreGasto + " - " + cantidadGasto + "€");
+                        gastoButton.setBackgroundColor(Color.parseColor("#BDEEE5")); // Fondo verde claro
+                        gastoButton.setTextColor(Color.parseColor("#09332B")); // Letras color oscuro
+                        gastoButton.setOnClickListener(v -> {
+                            new AlertDialog.Builder(this)
+                                    .setTitle("Eliminar gasto")
+                                    .setMessage("¿Estás seguro de que quieres eliminar este gasto?")
+                                    .setPositiveButton("Sí", (dialog, which) -> {
+                                        // Eliminar de Firebase
+                                        gastosRef.child(gastoId).removeValue()
+                                                .addOnCompleteListener(deleteTask -> {
+                                                    if (deleteTask.isSuccessful()) {
+                                                        Log.d("Firebase", "Gasto eliminado correctamente");
+                                                    } else {
+                                                        Log.e("Firebase", "Error al eliminar gasto: " + deleteTask.getException().getMessage());
+                                                    }
+                                                });
 
-                                            gastoContainer.removeView(gastoButton);
-                                            Toast.makeText(VistaGrupo.this, "Gasto eliminado", Toast.LENGTH_SHORT).show();
-                                        })
-                                        .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
-                                        .show();
-                            });
+                                        gastoContainer.removeView(gastoButton);
+                                        Toast.makeText(VistaGrupo.this, "Gasto eliminado", Toast.LENGTH_SHORT).show();
+                                    })
+                                    .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                                    .show();
+                        });
 
-                            gastoContainer.addView(gastoButton);
-                        }
+                        gastoContainer.addView(gastoButton);
+                    }
                 } else {
                     Log.e("Firebase", "Error al obtener el propietario del grupo: " + task.getException().getMessage());
                 }
@@ -266,49 +266,50 @@ public class VistaGrupo extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         String groupOwner = task.getResult().getValue(String.class);
 
-                            DatabaseReference gastosRef = database.getReference("grupos/" + groupId + "/gastos");
+                        DatabaseReference gastosRef = database.getReference("grupos/" + groupId + "/gastos");
 
-                            gastosRef.get().addOnCompleteListener(gastosTask -> {
-                                if (gastosTask.isSuccessful() && gastosTask.getResult().exists()) {
-                                    for (DataSnapshot snapshot : gastosTask.getResult().getChildren()) {
-                                        String gastoNombre = snapshot.child("nombre").getValue(String.class);
-                                        String cantidadGasto = snapshot.child("cantidad").getValue(String.class);
-                                        String usuario = snapshot.child("usuario").getValue(String.class);
+                        gastosRef.get().addOnCompleteListener(gastosTask -> {
+                            if (gastosTask.isSuccessful() && gastosTask.getResult().exists()) {
+                                for (DataSnapshot snapshot : gastosTask.getResult().getChildren()) {
+                                    String gastoNombre = snapshot.child("nombre").getValue(String.class);
+                                    String cantidadGasto = snapshot.child("cantidad").getValue(String.class);
+                                    String usuario = snapshot.child("usuario").getValue(String.class);
 
-                                        if (gastoNombre != null && cantidadGasto != null) {
-                                            Button gastoButton = new Button(this);
-                                            gastoButton.setText(gastoNombre + " - " + cantidadGasto + "€");
-                                            gastoButton.setBackgroundColor(Color.parseColor("#BDEEE5")); // Fondo verde claro
-                                            gastoButton.setTextColor(Color.parseColor("#09332B")); // Letras color oscuro
-                                            gastoButton.setOnClickListener(v -> {
-                                                new AlertDialog.Builder(this)
-                                                        .setTitle("Eliminar gasto")
-                                                        .setMessage("¿Estás seguro de que quieres eliminar este gasto?")
-                                                        .setPositiveButton("Sí", (dialog, which) -> {
-                                                            // Eliminar de Firebase y de la vista
-                                                            snapshot.getRef().removeValue()
-                                                                    .addOnCompleteListener(deleteTask -> {
-                                                                        if (deleteTask.isSuccessful()) {
-                                                                            Log.d("Firebase", "Gasto eliminado correctamente");
-                                                                        } else {
-                                                                            Log.e("Firebase", "Error al eliminar gasto: " + deleteTask.getException().getMessage());
-                                                                        }
-                                                                    });
+                                    if (gastoNombre != null && cantidadGasto != null) {
+                                        Button gastoButton = new Button(this);
+                                        // Se añade el correo del usuario que agregó el gasto
+                                        gastoButton.setText(gastoNombre + " (" + usuario + ") - " + cantidadGasto + "€");
+                                        gastoButton.setBackgroundColor(Color.parseColor("#BDEEE5")); // Fondo verde claro
+                                        gastoButton.setTextColor(Color.parseColor("#09332B")); // Letras color oscuro
+                                        gastoButton.setOnClickListener(v -> {
+                                            new AlertDialog.Builder(this)
+                                                    .setTitle("Eliminar gasto")
+                                                    .setMessage("¿Estás seguro de que quieres eliminar este gasto?")
+                                                    .setPositiveButton("Sí", (dialog, which) -> {
+                                                        // Eliminar de Firebase y de la vista
+                                                        snapshot.getRef().removeValue()
+                                                                .addOnCompleteListener(deleteTask -> {
+                                                                    if (deleteTask.isSuccessful()) {
+                                                                        Log.d("Firebase", "Gasto eliminado correctamente");
+                                                                    } else {
+                                                                        Log.e("Firebase", "Error al eliminar gasto: " + deleteTask.getException().getMessage());
+                                                                    }
+                                                                });
 
-                                                            gastoContainer.removeView(gastoButton); // Eliminar el botón de la vista
-                                                            Toast.makeText(VistaGrupo.this, "Gasto eliminado", Toast.LENGTH_SHORT).show();
-                                                        })
-                                                        .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
-                                                        .show();
-                                            });
+                                                        gastoContainer.removeView(gastoButton); // Eliminar el botón de la vista
+                                                        Toast.makeText(VistaGrupo.this, "Gasto eliminado", Toast.LENGTH_SHORT).show();
+                                                    })
+                                                    .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                                                    .show();
+                                        });
 
-                                            gastoContainer.addView(gastoButton);
-                                        }
+                                        gastoContainer.addView(gastoButton);
                                     }
-                                } else {
-                                    Log.e("Firebase", "No se encontraron gastos o error al cargar.");
                                 }
-                            });
+                            } else {
+                                Log.e("Firebase", "No se encontraron gastos o error al cargar.");
+                            }
+                        });
                     } else {
                         Log.e("Firebase", "Error al obtener el propietario del grupo: " + task.getException().getMessage());
                     }
