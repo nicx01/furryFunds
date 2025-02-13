@@ -120,6 +120,7 @@ public class VistaGrupo extends AppCompatActivity {
                                 .addOnCompleteListener(task2 -> {
                                     if (task2.isSuccessful()) {
                                         Log.d("Firebase", "Gasto guardado correctamente por " + userEmail);
+                                        recreate();
                                     } else {
                                         Log.e("Firebase", "Error al guardar gasto: " + task2.getException().getMessage());
                                     }
