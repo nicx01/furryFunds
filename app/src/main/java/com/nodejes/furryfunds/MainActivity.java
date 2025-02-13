@@ -21,12 +21,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.registro_vista);
+
+        // Iniciar servicio de música
+        Intent musicIntent = new Intent(this, MusicService.class);
+        startService(musicIntent);
+        stopService(new Intent(this, MusicFondoService.class)); // Detiene la música
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.vistaRegistro), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
+
 
     public void registrar(View view) {
         TextView editTextPassword = findViewById(R.id.editTextPassword);

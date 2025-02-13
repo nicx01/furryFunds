@@ -15,7 +15,7 @@ public class VistaCrearGasto extends ComponentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vista_gastos);
-
+        startService(new Intent(this, MusicFondoService.class)); // Inicia la música
         EditText etGastoNombre = findViewById(R.id.plaintexttitulo);
         EditText etCantidad = findViewById(R.id.plaintextcantidadgasto);
         Button btnCrearGasto = findViewById(R.id.buttonCrearGasto);
