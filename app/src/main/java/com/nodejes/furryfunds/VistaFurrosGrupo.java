@@ -153,7 +153,6 @@ public class VistaFurrosGrupo extends AppCompatActivity {
                         public void onCheckComplete(boolean exists) {
                             if (exists) {
                                 addGroupMember(email);
-                                cargarFurros();
                             } else {
                                 mostrarPopUp("El correo no está registrado en la aplicación.", true);
                             }
@@ -268,6 +267,7 @@ public class VistaFurrosGrupo extends AppCompatActivity {
                                                 if (task.isSuccessful()) {
                                                     Log.d("Firebase", "Miembro eliminado con éxito.");
                                                     mostrarPopUp("Miembro eliminado con éxito.", false);
+                                                    loadGroupMembers();
                                                 } else {
                                                     Log.e("Firebase", "Error al eliminar el miembro: " + task.getException().getMessage());
                                                     mostrarPopUp("Error al eliminar el miembro.", true);
@@ -322,6 +322,7 @@ public class VistaFurrosGrupo extends AppCompatActivity {
                                 .addOnCompleteListener(addMemberTask -> {
                                     if (addMemberTask.isSuccessful()) {
                                         Log.d("Firebase", "Miembro agregado correctamente al grupo.");
+                                        loadGroupMembers();
                                     } else {
                                         Log.e("Firebase", "Error al agregar miembro: " + addMemberTask.getException().getMessage());
                                     }
