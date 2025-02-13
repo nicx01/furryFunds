@@ -22,6 +22,7 @@ public class VistaRetoIndividual extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        startService(new Intent(this, MusicFondoService.class)); // Inicia la música
         EditText etTitulo = findViewById(R.id.plainTextTituloReto);
         EditText etDescripcion = findViewById(R.id.plaintextDescripcionReto);
         Button btnCrear = findViewById(R.id.buttonCrearReto);

@@ -36,6 +36,9 @@
         <activity android:name=".VistaBalance"/>
         <activity android:name=".VistaEstadisticas"/>
         <activity android:name=".VistaCrearGasto"/>
+        <service android:name=".MusicService" android:enabled="true" android:exported="false"/>
+        <service android:name=".MusicFondoService" android:enabled="true" android:exported="false"/>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"

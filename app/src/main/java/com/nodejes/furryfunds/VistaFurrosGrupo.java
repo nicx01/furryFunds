@@ -42,7 +42,7 @@ public class VistaFurrosGrupo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.vistafurrosgrupo);
-
+        startService(new Intent(this, MusicFondoService.class)); // Inicia la música
         // Inicializar la lista de correos
         emailList = new ArrayList<>();
 

@@ -35,6 +35,7 @@ public class CompartirAnimal extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        startService(new Intent(this, MusicFondoService.class)); // Inicia la música
         cargarImagenPerfil();
         findViewById(R.id.shareButton2).setOnClickListener(v -> compartirImagen());
 

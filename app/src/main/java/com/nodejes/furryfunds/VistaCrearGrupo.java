@@ -25,6 +25,7 @@ public class VistaCrearGrupo extends ComponentActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        startService(new Intent(this, MusicFondoService.class)); // Inicia la música
 
         edtGroupName = findViewById(R.id.plainTextTituloGrupo);
         Button btnSaveGroup = findViewById(R.id.buttonCrearGrupo);

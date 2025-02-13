@@ -20,6 +20,7 @@ public class VistaGastos extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        startService(new Intent(this, MusicFondoService.class)); // Inicia la música
     }
 
     public void InicioViewGasto(View v) {
