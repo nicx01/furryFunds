@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -53,40 +55,67 @@ public class VistaFurrosGrupo extends AppCompatActivity {
         loadGroupMembers();
     }
     public void cargarFurros() {
-        // Obtener el ScrollView del diseño
         ScrollView scrollView = findViewById(R.id.scrollViewFurrosGrupo);
 
-        // Verificar que el ScrollView no sea nulo
         if (scrollView != null) {
-            // Crear un contenedor LinearLayout dentro del ScrollView
             LinearLayout container = new LinearLayout(this);
             container.setOrientation(LinearLayout.VERTICAL);
-
-            // Limpiar cualquier vista previa en el LinearLayout si ya existe
             container.removeAllViews();
 
-            // Iterar sobre la lista de correos (emailList) y agregar botones dinámicamente
-            for (String item : emailList) {
-                Button button = new Button(this);
-                button.setText(item);
-                button.setTextSize(16);
-                button.setBackgroundColor(Color.parseColor("#BDEEE5")); // Fondo verde claro
-                button.setTextColor(Color.parseColor("#09332B")); // Letras color oscuro
-                button.setPadding(8, 8, 8, 8);
+            for (String email : emailList) {
+                LinearLayout itemLayout = new LinearLayout(this);
+                itemLayout.setOrientation(LinearLayout.HORIZONTAL);
+                itemLayout.setPadding(16, 16, 16, 16);
+                itemLayout.setBackgroundColor(Color.parseColor("#BDEEE5")); // Fondo verde claro
 
-                // Establecer un listener para eliminar el correo cuando se presione el botón
-                button.setOnClickListener(v -> mostrarConfirmacionEliminacion(item));
+                ImageView imageView = new ImageView(this);
+                LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(100, 100); // ancho y alto en píxeles
+                imageView.setLayoutParams(imageParams);
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                //imageView.setImageResource(R.drawable.default_avatar); // Imagen por defecto (debe existir en tus recursos)
 
-                // Agregar el botón al contenedor
-                container.addView(button);
+                TextView textView = new TextView(this);
+                textView.setText(email);
+                textView.setTextSize(16);
+                textView.setTextColor(Color.parseColor("#09332B"));
+                textView.setPadding(16, 0, 0, 0);
+                textView.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+
+                itemLayout.addView(imageView);
+                itemLayout.addView(textView);
+
+                itemLayout.setOnClickListener(v -> mostrarConfirmacionEliminacion(email));
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance("https://furryfunds-29d6b-default-rtdb.europe-west1.firebasedatabase.app/");
+                Query userQuery = database.getReference("usuarios").orderByChild("email").equalTo(email);
+                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                Integer imagenSeleccionada = ds.child("imagenSeleccionada").getValue(Integer.class);
+                                if (imagenSeleccionada != null) {
+                                    imageView.setImageResource(imagenSeleccionada);
+                                }
+                                break;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        Log.e("Firebase", "Error al cargar la imagen para " + email, error.toException());
+                    }
+                });
+
+                container.addView(itemLayout);
             }
-
-            // Agregar el LinearLayout como único hijo del ScrollView
-            scrollView.removeAllViews();  // Eliminar cualquier vista anterior del ScrollView
-            scrollView.addView(container); // Agregar el LinearLayout al ScrollView
+            scrollView.removeAllViews();
+            scrollView.addView(container);
         }
     }
-
 
 
     public void addFurros(View v) {
@@ -105,7 +134,7 @@ public class VistaFurrosGrupo extends AppCompatActivity {
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Agregar correo")
                 .setMessage("Introduce el correo para agregarlo al grupo:")
-                .setView(emailInput) // Agregar el campo de texto
+                .setView(emailInput)
                 .setPositiveButton("Agregar", (dialogInterface, i) -> {
                     String email = emailInput.getText().toString().trim();
 
@@ -124,8 +153,6 @@ public class VistaFurrosGrupo extends AppCompatActivity {
                         public void onCheckComplete(boolean exists) {
                             if (exists) {
                                 addGroupMember(email);
-                                emailList.add(email);
-                                mostrarPopUp("Correo agregado: " + email, false);
                                 cargarFurros();
                             } else {
                                 mostrarPopUp("El correo no está registrado en la aplicación.", true);
@@ -198,10 +225,9 @@ public class VistaFurrosGrupo extends AppCompatActivity {
                 .setTitle("Confirmar eliminación")
                 .setMessage("¿Estás seguro de que deseas eliminar el correo: " + email + "?")
                 .setPositiveButton("Sí, eliminar", (dialogInterface, i) -> {
-                    boolean removed = emailList.remove(email.trim());
+                    boolean exists = emailList.contains(email.trim());
 
-                    if (removed) {
-                        mostrarPopUp("Correo eliminado: " + email, false);
+                    if (exists) {
                         eliminarMiembro(email);
                         cargarFurros(); // Actualizar la vista después de eliminar
                     } else {
