@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    private boolean isMuted = false;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,35 +24,51 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.registro_vista);
 
-        // Iniciar servicio de música
         Intent musicIntent = new Intent(this, MusicService.class);
         startService(musicIntent);
-        stopService(new Intent(this, MusicFondoService.class)); // Detiene la música
+        stopService(new Intent(this, MusicFondoService.class));
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.vistaRegistro), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-    }
 
+        Button btnMute = findViewById(R.id.btnMute);
+        btnMute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isMuted) {
+                    stopService(new Intent(MainActivity.this, MusicService.class));
+                    isMuted = true;
+                    btnMute.setText("Unmute Music");
+                    Log.d("MainActivity", "Música silenciada");
+                } else {
+                    startService(new Intent(MainActivity.this, MusicService.class));
+                    isMuted = false;
+                    btnMute.setText("Mute Music");
+                    Log.d("MainActivity", "Música reactivada");
+                }
+            }
+        });
+    }
 
     public void registrar(View view) {
         TextView editTextPassword = findViewById(R.id.editTextPassword);
         TextView editTextNombre = findViewById(R.id.editTextNombre);
-        boolean errorNombre=false;
-        boolean errorPassword=false;
-        if (editTextPassword.getText().length() != 0 && editTextPassword.getText() != ""){
-            errorPassword=true;
-        }else{
+        boolean errorNombre = false;
+        boolean errorPassword = false;
+        if (editTextPassword.getText().length() != 0 && !editTextPassword.getText().toString().equals("")) {
+            errorPassword = true;
+        } else {
             editTextPassword.setError("Contraseña inválida");
-            errorPassword=false;
+            errorPassword = false;
         }
-        if(editTextNombre.getText().length() != 0 && editTextNombre.getText() != ""){
-            errorNombre=true;
-        }else{
+        if (editTextNombre.getText().length() != 0 && !editTextNombre.getText().toString().equals("")) {
+            errorNombre = true;
+        } else {
             editTextNombre.setError("Nombre inválido");
-            errorPassword=false;
+            errorNombre = false;
         }
         if (errorNombre && errorPassword) {
             FireBase fireBase = new FireBase();
@@ -68,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-
     }
+
     public void iniciarSesion(View view) {
         TextView editTextPassword = findViewById(R.id.editTextPassword);
         TextView editTextNombre = findViewById(R.id.editTextNombre);
@@ -87,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             errorNombre = true;
         } else {
             editTextNombre.setError("Nombre inválido");
-            errorPassword = false;
+            errorNombre = false;
         }
 
         if (errorNombre && errorPassword) {
@@ -103,12 +121,9 @@ public class MainActivity extends AppCompatActivity {
                         Log.w("TAG", "El usuario no existe o las credenciales son incorrectas.");
                         editTextNombre.setError("Nombre incorrecto");
                         editTextPassword.setError("Contraseña incorrecta");
-
                     }
                 }
             });
         }
     }
-
-
 }
